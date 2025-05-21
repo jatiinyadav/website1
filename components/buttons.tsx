@@ -1,34 +1,34 @@
 export default function Buttons() {
   return (
     <>
-      <div className="flex gap-10 description">
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-10 description">
         <button
           type="button"
-          className="text-gray-900 border bg-[#fff8e6] border-gray-900 border-2 text-md rounded-lg px-8 py-2.5 me-2 mb-2"
+          className="text-gray-900 bg-[#fff8e6] border-2 border-gray-900 text-sm sm:text-base md:text-md rounded-lg px-6 sm:px-8 py-2 sm:py-2.5"
         >
           Sports
         </button>
         <button
           type="button"
-          className="text-gray-900 border bg-[#fff8e6] border-gray-900 border-2 text-md rounded-lg px-8 py-2.5 me-2 mb-2"
+          className="text-gray-900 bg-[#fff8e6] border-2 border-gray-900 text-sm sm:text-base md:text-md rounded-lg px-6 sm:px-8 py-2 sm:py-2.5"
         >
           Movies & TV
         </button>
         <button
           type="button"
-          className="text-gray-900 border bg-[#fff8e6] border-gray-900 border-2 text-md rounded-lg px-8 py-2.5 me-2 mb-2"
+          className="text-gray-900 bg-[#fff8e6] border-2 border-gray-900 text-sm sm:text-base md:text-md rounded-lg px-6 sm:px-8 py-2 sm:py-2.5"
         >
           Cars
         </button>
         <button
           type="button"
-          className="text-gray-900 border bg-[#fff8e6] border-gray-900 border-2 text-md rounded-lg px-8 py-2.5 me-2 mb-2"
+          className="text-gray-900 bg-[#fff8e6] border-2 border-gray-900 text-sm sm:text-base md:text-md rounded-lg px-6 sm:px-8 py-2 sm:py-2.5"
         >
           Hollywood
         </button>
         <button
           type="button"
-          className="text-gray-900 border bg-[#fff8e6] border-gray-900 border-2 text-md rounded-lg px-8 py-2.5 me-2 mb-2"
+          className="text-gray-900 bg-[#fff8e6] border-2 border-gray-900 text-sm sm:text-base md:text-md rounded-lg px-6 sm:px-8 py-2 sm:py-2.5"
         >
           Bollywood
         </button>

@@ -74,29 +74,32 @@ export default function Home() {
     <div className="relative min-h-screen bgTesting">
       {/* <Header /> */}
       <div
-        className="alignInCenter items-center justify-center text-center px-4 text-[#121A2A]"
+        className="flex min-h-screen items-center justify-center text-center px-4 text-[#121A2A]"
         style={{ zIndex: 2 }}
       >
         <div>
           <div className="mb-10">
             <h1
               ref={headingRef}
-              className="text-8xl font-bold leading-tight hero"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight hero text-center"
             ></h1>
           </div>
+
           <div
             ref={descriptionRef}
             className="opacity-0 translate-y-6"
             style={{ transform: "translateY(24px)" }}
           >
-            <div className="text-2xl font-bold mb-14 description">
+            <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-10 md:mb-14 text-center description px-4 sm:px-6 md:px-0">
               <p>
                 Guess which topic ranks higher and prove you're trend-savvy.
               </p>
               <p>Only 1% get past 10 — are you one of them?</p>
             </div>
 
-            <Buttons />
+            <div className="flex justify-center">
+              <Buttons />
+            </div>
           </div>
         </div>
       </div>
@@ -104,10 +107,10 @@ export default function Home() {
       <div className="opacity-0" ref={planeRef}>
         <PlaneAnimation />
       </div>
-      <div className="absolute left-50 opacity-0" ref={rightScroll}>
+      <div className="absolute top-0 left-50 opacity-0" ref={rightScroll}>
         <CircleSpinner direction="down" position="right" offset={160} />
       </div>
-      <div className="absolute right-50 opacity-0" ref={leftScroll}>
+      <div className="absolute top-0 right-50 opacity-0" ref={leftScroll}>
         <CircleSpinner direction="up" position="left" offset={160} />
       </div>
 

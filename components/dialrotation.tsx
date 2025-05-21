@@ -10,7 +10,7 @@ const imageURLs = [
   "https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-umsNhCOvityhX7YwcgZ0YerJKZD3XO.png&w=256&q=75",
   "https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-6Inz57rRx6BwWwDRsQO8nsSfyUVz1c.png&w=256&q=75",
   "https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-IPe6fFeR1w6DVZ2143Y6YCLibSOdq7.png&w=256&q=75",
-  "https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-ob5X6P6AiLzXqRjJXCOedM4RaJ3Joa.png&w=256&q=75"
+  "https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-ob5X6P6AiLzXqRjJXCOedM4RaJ3Joa.png&w=256&q=75",
 ];
 
 type Props = {
@@ -77,7 +77,7 @@ const CircleSpinner = ({
             key={idx}
             src={url}
             alt={`icon-${idx}`}
-            className="w-30 h-30 object-contain mx-auto"
+            className="lg:w-30 lg:h-30 w-20 h-20 object-contain mx-auto"
           />
         ))}
       </div>
