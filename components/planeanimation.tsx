@@ -36,7 +36,8 @@ const PlaneAnimation = () => {
 
   return (
     <>
-      <div className="container">
+
+      <div className="alignment">
         <svg
           id="svg-stage"
           xmlns="http://www.w3.org/2000/svg"
@@ -90,11 +91,12 @@ const PlaneAnimation = () => {
 
       <style jsx>
         {`
-          .container {
+          .alignment {
             position: absolute;
-            top: 40%;
+            top: 50%;
             left: 50%;
-            transform: translate(-40%, -50%);
+            transform: translate(-50%, -50%);
+            width: 60%;
           }
 
           #svg-stage {

@@ -14,14 +14,14 @@ const imageURLs = [
 ];
 
 type Props = {
-  direction?: "up" | "down";
-  position?: "left" | "right";
-  offset?: number; // e.g., 40
+  direction?: "left" | "right"; // Changed from up/down to left/right
+  position?: "top" | "bottom"; // Optional, but we now move horizontally
+  offset?: number;
 };
 
-const CircleSpinner = ({
-  direction = "up",
-  position = "left",
+const HorizontalSpinner = ({
+  direction = "left",
+  position = "top",
   offset = 0,
 }: Props) => {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -29,16 +29,16 @@ const CircleSpinner = ({
   useEffect(() => {
     if (!trackRef.current) return;
 
-    const fromY = direction === "up" ? 0 : "-50%";
-    const toY = direction === "up" ? "-50%" : "0%";
+    const fromX = direction === "left" ? 0 : "-50%";
+    const toX = direction === "left" ? "-50%" : "0%";
 
     const marquee = gsap.fromTo(
       trackRef.current,
-      { y: fromY },
+      { x: fromX },
       {
-        y: toY,
+        x: toX,
         ease: "none",
-        duration: 80,
+        duration: 10,
         repeat: -1,
       }
     );
@@ -49,35 +49,28 @@ const CircleSpinner = ({
   }, [direction]);
 
   const positionStyle =
-    position === "left" ? { left: `${offset}px` } : { right: `${offset}px` };
+    position === "top" ? { top: `${offset}px` } : { bottom: `${offset}px` };
 
   return (
     <div
-      className="top-0 w-40 h-screen overflow-hidden z-10"
+      className="left-0 w-screen h-40 overflow-hidden z-10 absolute"
       style={{
         ...positionStyle,
         WebkitMaskImage:
-          "linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)",
+          "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
         maskImage:
-          "linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)",
+          "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
         WebkitMaskRepeat: "no-repeat",
         maskRepeat: "no-repeat",
       }}
     >
-      <div ref={trackRef} className="flex flex-col gap-12">
-        {[
-          ...imageURLs,
-          ...imageURLs,
-          ...imageURLs,
-          ...imageURLs,
-          ...imageURLs,
-          ...imageURLs,
-        ].map((url, idx) => (
+      <div ref={trackRef} className="flex flex-row gap-12">
+        {[...imageURLs, ...imageURLs, ...imageURLs].map((url, idx) => (
           <img
             key={idx}
             src={url}
             alt={`icon-${idx}`}
-            className="lg:w-30 lg:h-30 w-20 h-20 object-contain mx-auto"
+            className="lg:w-30 lg:h-30 w-20 h-20 object-contain"
           />
         ))}
       </div>
@@ -85,4 +78,4 @@ const CircleSpinner = ({
   );
 };
 
-export default CircleSpinner;
+export default HorizontalSpinner;

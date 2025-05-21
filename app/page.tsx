@@ -7,16 +7,19 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Buttons from "@/components/buttons";
 import PlaneAnimation from "@/components/planeanimation";
-import CircleSpinner from "@/components/dialrotation";
+import VerticalSpinner from "@/components/verticalspinner";
 import "../styles/global.css";
+import HorizontalSpinner from "@/components/horizontalspinner";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLDivElement>(null);
-  const leftScroll = useRef<HTMLDivElement>(null);
-  const rightScroll = useRef<HTMLDivElement>(null);
+  const verticalLeftScroll = useRef<HTMLDivElement>(null);
+  const horizontalLeftScroll = useRef<HTMLDivElement>(null);
+  const verticalRightScroll = useRef<HTMLDivElement>(null);
+  const horizontalRightScroll = useRef<HTMLDivElement>(null);
   const planeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -64,7 +67,12 @@ export default function Home() {
       "-=0.5"
     );
     tl.to(
-      [rightScroll.current, leftScroll.current],
+      [verticalLeftScroll.current, verticalRightScroll.current],
+      { opacity: 1, y: 0, duration: 1, ease: "power1.out" },
+      "-=0.5"
+    );
+    tl.to(
+      [horizontalLeftScroll.current, horizontalRightScroll.current],
       { opacity: 1, y: 0, duration: 1, ease: "power1.out" },
       "-=0.5"
     );
@@ -81,7 +89,7 @@ export default function Home() {
           <div className="mb-10">
             <h1
               ref={headingRef}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight hero text-center"
+              className="text-[2.50rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight hero text-center"
             ></h1>
           </div>
 
@@ -107,11 +115,31 @@ export default function Home() {
       <div className="opacity-0" ref={planeRef}>
         <PlaneAnimation />
       </div>
-      <div className="absolute top-0 left-50 opacity-0" ref={rightScroll}>
-        <CircleSpinner direction="down" position="right" offset={160} />
+      <div className="hidden lg:block">
+        <div
+          className="absolute top-0 left-50 opacity-0"
+          ref={verticalLeftScroll}
+        >
+          <VerticalSpinner direction="down" position="right" offset={160} />
+        </div>
+        <div
+          className="absolute top-0 right-50 opacity-0"
+          ref={verticalRightScroll}
+        >
+          <VerticalSpinner direction="up" position="left" offset={160} />
+        </div>
       </div>
-      <div className="absolute top-0 right-50 opacity-0" ref={leftScroll}>
-        <CircleSpinner direction="up" position="left" offset={160} />
+
+      <div className="block lg:hidden">
+        <div className="absolute top-0 opacity-0" ref={horizontalLeftScroll}>
+          <HorizontalSpinner direction="left" position="top" offset={100} />
+        </div>
+        <div
+          className="absolute bottom-0 opacity-0"
+          ref={horizontalRightScroll}
+        >
+          <HorizontalSpinner direction="right" position="bottom" offset={20} />
+        </div>
       </div>
 
       <Footer />
