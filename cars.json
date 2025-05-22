@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Ferrari 488 GTB",
+        "price": 2.62
+    },
+    {
+        "name": "Lamborghini Aventador",
+        "price": 3.94
+    },
+    {
+        "name": "Porsche 911 Turbo S",
+        "price": 2.16
+    },
+    {
+        "name": "Bugatti Chiron",
+        "price": 30.00
+    },
+    {
+        "name": "McLaren 720S",
+        "price": 3.02
+    },
+    {
+        "name": "Tesla Model S Plaid",
+        "price": 0.90
+    },
+    {
+        "name": "BMW M5 Competition",
+        "price": 1.12
+    },
+    {
+        "name": "Audi RS7 Sportback",
+        "price": 1.25
+    },
+    {
+        "name": "Mercedes-AMG GT R",
+        "price": 1.63
+    },
+    {
+        "name": "Koenigsegg Jesko",
+        "price": 30.00
+    }
+]
