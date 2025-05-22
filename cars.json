@@ -1,42 +1,52 @@
 [
     {
         "name": "Ferrari 488 GTB",
-        "price": 2.62
+        "price": 2.62,
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Ferrari_488_Pista_Genf_2018.jpg/960px-Ferrari_488_Pista_Genf_2018.jpg"
     },
     {
         "name": "Lamborghini Aventador",
-        "price": 3.94
+        "price": 3.94,
+        "url": "http://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/2023_Lamborghini_Aventador_Ultimae.jpg/1920px-2023_Lamborghini_Aventador_Ultimae.jpg"
     },
     {
         "name": "Porsche 911 Turbo S",
-        "price": 2.16
+        "price": 2.16,
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Porsche_911_No_1000000%2C_70_Years_Porsche_Sports_Car%2C_Berlin_%281X7A3888%29.jpg/1280px-Porsche_911_No_1000000%2C_70_Years_Porsche_Sports_Car%2C_Berlin_%281X7A3888%29.jpg"
     },
     {
         "name": "Bugatti Chiron",
-        "price": 30.00
+        "price": 30.00,
+        "url": "https://en.wikipedia.org/wiki/Bugatti_Chiron#/media/File:Bugatti_Chiron_1.jpg"
     },
     {
         "name": "McLaren 720S",
-        "price": 3.02
+        "price": 3.02,
+        "url": "https://en.wikipedia.org/wiki/McLaren_720S#/media/File:2018_McLaren_720S_V8_S-A_4.0.jpg"
     },
     {
         "name": "Tesla Model S Plaid",
-        "price": 0.90
+        "price": 0.90,
+        "url": "https://en.wikipedia.org/wiki/Tesla_Model_S#/media/File:Tesla_Model_S_(Facelift_ab_04-2016)_(cropped).jpg"
     },
     {
-        "name": "BMW M5 Competition",
-        "price": 1.12
+        "name": "BMW M5 CS",
+        "price": 1.12,
+        "url": "https://en.wikipedia.org/wiki/BMW_M5#/media/File:2021_BMW_M5_CS.jpg"
     },
     {
         "name": "Audi RS7 Sportback",
-        "price": 1.25
+        "price": 1.25,
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Audi_RS_7_Sportback_%28C8%29_%E2%80%93_f_06082021.jpg/960px-Audi_RS_7_Sportback_%28C8%29_%E2%80%93_f_06082021.jpg?20210807203420"
     },
     {
         "name": "Mercedes-AMG GT R",
-        "price": 1.63
+        "price": 1.63,
+        "url": "https://en.wikipedia.org/wiki/Mercedes-AMG_GT#/media/File:Festival_automobile_international_2015_-_Mercedes_AMG_GT_-_003.jpg"
     },
     {
         "name": "Koenigsegg Jesko",
-        "price": 30.00
+        "price": 30.00,
+        "url": "https://en.wikipedia.org/wiki/Koenigsegg_Jesko#/media/File:GIMS_2019,_Le_Grand-Saconnex_(GIMS0833).jpg"
     }
 ]
