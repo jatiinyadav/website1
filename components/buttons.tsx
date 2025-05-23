@@ -26,7 +26,7 @@ export default function Buttons() {
         </button>
         <button
           type="button"
-          className="text-gray-900 bg-[#fff8e6] border-2 border-gray-900 text-sm sm:text-base md:text-md rounded-lg px-6 sm:px-8 py-2 sm:py-2.5"
+          className="text-gray-900 bg-[#fff8e6] border-2 border-gray-900 text-sm sm:text-base md:text-md rounded-lg px-6 sm:px-8 py-2 sm:py-2.5 cursor-pointer"
           onClick={handleClick}
         >
           Cars

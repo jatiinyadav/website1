@@ -61,17 +61,13 @@ export default function Home() {
       "-=0.5"
     );
     tl.to(
-      descriptionRef.current,
-      { opacity: 1, y: 0, duration: 1, ease: "power1.out" },
-      "-=0.5"
-    );
-    tl.to(
-      [verticalLeftScroll.current, verticalRightScroll.current],
-      { opacity: 1, y: 0, duration: 1, ease: "power1.out" },
-      "-=0.5"
-    );
-    tl.to(
-      [horizontalLeftScroll.current, horizontalRightScroll.current],
+      [
+        descriptionRef.current,
+        verticalLeftScroll.current,
+        verticalRightScroll.current,
+        horizontalLeftScroll.current,
+        horizontalRightScroll.current,
+      ],
       { opacity: 1, y: 0, duration: 1, ease: "power1.out" },
       "-=0.5"
     );
@@ -110,10 +106,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-{/* 
+      
       <div className="opacity-0" ref={planeRef}>
         <PlaneAnimation />
-      </div> */}
+      </div>
       <div className="hidden lg:block">
         <div
           className="absolute top-0 left-50 opacity-0"
