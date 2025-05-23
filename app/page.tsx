@@ -25,7 +25,7 @@ export default function Home() {
     const headingEl = headingRef.current;
     if (!headingEl) return;
 
-    const lines = ["Easy to Play.", "Hard to Survive."];
+    const lines = ["Easy to Play", "Hard to Survive"];
 
     // Clear existing content
     headingEl.innerHTML = "";
@@ -51,7 +51,7 @@ export default function Home() {
 
     // Animate fade in line by line
     lineSpans.forEach((lineSpan) => {
-      tl.to(lineSpan, { duration: 1, opacity: 1, ease: "power1.out" });
+      tl.to(lineSpan, { duration: 0.6, opacity: 1, ease: "power1.out" });
     });
 
     // Fade in description after heading lines
@@ -68,7 +68,7 @@ export default function Home() {
         horizontalLeftScroll.current,
         horizontalRightScroll.current,
       ],
-      { opacity: 1, y: 0, duration: 1, ease: "power1.out" },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power1.out" },
       "-=0.5"
     );
   }, []);
