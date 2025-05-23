@@ -35,7 +35,6 @@ export default function Home() {
       const lineSpan = document.createElement("span");
       lineSpan.style.display = "block";
       lineSpan.style.opacity = "0"; // start invisible
-      lineSpan.className = "hero"
       lineSpan.textContent = line;
       headingEl.appendChild(lineSpan);
     });
@@ -85,7 +84,7 @@ export default function Home() {
           <div className="mb-10">
             <h1
               ref={headingRef}
-              className="hero text-[2.50rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center"
+              className="description text-[2.50rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center"
             ></h1>
           </div>
 
