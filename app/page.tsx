@@ -35,6 +35,7 @@ export default function Home() {
       const lineSpan = document.createElement("span");
       lineSpan.style.display = "block";
       lineSpan.style.opacity = "0"; // start invisible
+      lineSpan.className = "hero"
       lineSpan.textContent = line;
       headingEl.appendChild(lineSpan);
     });
