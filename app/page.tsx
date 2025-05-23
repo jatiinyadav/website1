@@ -108,9 +108,9 @@ export default function Home() {
         </div>
       </div>
       
-      <div className="opacity-0" ref={planeRef}>
+      {/* <div className="opacity-0" ref={planeRef}>
         <PlaneAnimation />
-      </div>
+      </div> */}
       <div className="hidden lg:block">
         <div
           className="absolute top-0 left-50 opacity-0"
