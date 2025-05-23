@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import "../styles/globals.css";
 import GameOverModal from "@/components/gameover";
 import StreakCounter from "@/components/streak";
+import data from "../cars.json"
 
 type Car = {
   name: string;
   price: number;
   url: string;
-  shown: boolean;
+  shown?: boolean;
 };
 
 export default function Play() {
@@ -22,12 +23,12 @@ export default function Play() {
   useEffect(() => {
     const fetchCarData = async () => {
       try {
-        const response = await fetch(
-          "https://raw.githubusercontent.com/jatiinyadav/website1/refs/heads/master/cars.json"
-        );
-        if (!response.ok) throw new Error("Failed to fetch data");
+        // const response = await fetch(
+        //   "https://raw.githubusercontent.com/jatiinyadav/website1/refs/heads/master/cars.json"
+        // );
+        // if (!response.ok) throw new Error("Failed to fetch data");
 
-        const data = await response.json();
+        // const data = await response.json();
         const initializedCars = data.map((car: Car) => ({
           ...car,
           shown: false,
@@ -87,7 +88,7 @@ export default function Play() {
 
     // If wrong, end game after delay
     if (!isCorrect) {
-      setTimeout(() => setGameOver(true), 1000);
+      setTimeout(() => setGameOver(true), 300);
       setStreak(0);
       return;
     }
@@ -118,7 +119,17 @@ export default function Play() {
   };
 
   const restartGame = () => {
-    window.location.reload();
+    setGameOver(false)
+    setSelected(null);
+    setResultColor({ left: "", right: "" });
+    const initializedCars = cars.map((car: Car) => ({
+      ...car,
+      shown: false,
+    }));
+    setCars(initializedCars);
+    const [a, b] = getTwoRandomCars(initializedCars);
+    setLeftCar(a);
+    setRightCar(b);
   };
 
   return (
