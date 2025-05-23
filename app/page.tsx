@@ -8,7 +8,6 @@ import Footer from "@/components/footer";
 import Buttons from "@/components/buttons";
 import PlaneAnimation from "@/components/planeanimation";
 import VerticalSpinner from "@/components/verticalspinner";
-import "../styles/global.css";
 import HorizontalSpinner from "@/components/horizontalspinner";
 
 gsap.registerPlugin(ScrollTrigger);
