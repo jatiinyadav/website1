@@ -2,51 +2,51 @@
     {
         "name": "Ferrari 488 GTB",
         "price": 2.62,
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Ferrari_488_Pista_Genf_2018.jpg/960px-Ferrari_488_Pista_Genf_2018.jpg"
+        "url": "https://i.pinimg.com/736x/9d/4e/48/9d4e489a87dee5fdf1854c47175769a3.jpg"
     },
     {
         "name": "Lamborghini Aventador",
         "price": 3.94,
-        "url": "http://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/2023_Lamborghini_Aventador_Ultimae.jpg/1920px-2023_Lamborghini_Aventador_Ultimae.jpg"
+        "url": "https://i.pinimg.com/736x/c5/7f/59/c57f597ded4a9c8e92f8e1a4aab5cd72.jpg"
     },
     {
         "name": "Porsche 911 Turbo S",
         "price": 2.16,
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Porsche_911_No_1000000%2C_70_Years_Porsche_Sports_Car%2C_Berlin_%281X7A3888%29.jpg/1280px-Porsche_911_No_1000000%2C_70_Years_Porsche_Sports_Car%2C_Berlin_%281X7A3888%29.jpg"
+        "url": "https://i.pinimg.com/originals/fd/69/ef/fd69ef65a575654cc025b381d8df224b.jpg"
     },
     {
         "name": "Bugatti Chiron",
         "price": 30.00,
-        "url": "https://en.wikipedia.org/wiki/Bugatti_Chiron#/media/File:Bugatti_Chiron_1.jpg"
+        "url": "https://i.pinimg.com/736x/d0/38/b4/d038b4daf55617abaf33cc21a6cefe09.jpg"
     },
     {
         "name": "McLaren 720S",
         "price": 3.02,
-        "url": "https://en.wikipedia.org/wiki/McLaren_720S#/media/File:2018_McLaren_720S_V8_S-A_4.0.jpg"
+        "url": "https://i.pinimg.com/736x/6b/c8/a9/6bc8a947f44c197f3c5ffd1269497beb.jpg"
     },
     {
         "name": "Tesla Model S Plaid",
         "price": 0.90,
-        "url": "https://en.wikipedia.org/wiki/Tesla_Model_S#/media/File:Tesla_Model_S_(Facelift_ab_04-2016)_(cropped).jpg"
+        "url": "https://i.pinimg.com/736x/30/9a/da/309ada459da49544debd994a608f0ae0.jpg"
     },
     {
         "name": "BMW M5 CS",
         "price": 1.12,
-        "url": "https://en.wikipedia.org/wiki/BMW_M5#/media/File:2021_BMW_M5_CS.jpg"
+        "url": "https://i.pinimg.com/736x/56/03/b8/5603b8f1099dc8d01b46cc55c057d404.jpg"
     },
     {
         "name": "Audi RS7 Sportback",
         "price": 1.25,
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Audi_RS_7_Sportback_%28C8%29_%E2%80%93_f_06082021.jpg/960px-Audi_RS_7_Sportback_%28C8%29_%E2%80%93_f_06082021.jpg?20210807203420"
+        "url": "https://i.pinimg.com/736x/69/61/52/696152bcc5aab73b5dd2f15d4dbc743c.jpg"
     },
     {
         "name": "Mercedes-AMG GT R",
         "price": 1.63,
-        "url": "https://en.wikipedia.org/wiki/Mercedes-AMG_GT#/media/File:Festival_automobile_international_2015_-_Mercedes_AMG_GT_-_003.jpg"
+        "url": "https://i.pinimg.com/736x/26/6a/03/266a03ab30fc24ac478782299048e7ca.jpg"
     },
     {
         "name": "Koenigsegg Jesko",
         "price": 30.00,
-        "url": "https://en.wikipedia.org/wiki/Koenigsegg_Jesko#/media/File:GIMS_2019,_Le_Grand-Saconnex_(GIMS0833).jpg"
+        "url": "https://i.pinimg.com/736x/40/36/f8/4036f817b87613543f89ae878c40e8f0.jpg"
     }
 ]
