@@ -8,7 +8,7 @@ type StreakCounterProps = {
 
 const StreakCounter: React.FC<StreakCounterProps> = ({ count }) => {
   return (
-    <div className="absolute left-[47%] top-[2%] bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 shadow-lg z-30" >
+    <div className="absolute top-[10%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 shadow-lg z-2" >
       <img
         src="/fire.gif"
         alt="Fire Streak"

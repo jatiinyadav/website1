@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import "../styles/globals.css";
 import GameOverModal from "@/components/gameover";
 import StreakCounter from "@/components/streak";
-import data from "../cars.json"
+import data from "../cars.json";
+import Footer from "@/components/footer";
 
 type Car = {
   name: string;
@@ -119,7 +120,8 @@ export default function Play() {
   };
 
   const restartGame = () => {
-    setGameOver(false)
+    setStreak(0)
+    setGameOver(false);
     setSelected(null);
     setResultColor({ left: "", right: "" });
     const initializedCars = cars.map((car: Car) => ({
@@ -133,51 +135,61 @@ export default function Play() {
   };
 
   return (
-    <div className="relative flex h-screen">
-      <StreakCounter count={streak} />
-      {/* Left Car */}
-      {leftCar && (
-        <div
-          className={`w-1/2 h-full relative cursor-pointer border-8 transition-all duration-300 ${
-            resultColor.left
-              ? resultColor.left
-              : "hover:border-white border-transparent"
-          }`}
-          onClick={() => handleSelection("left")}
-        >
-          <img
-            src={leftCar.url}
-            alt={leftCar.name}
-            className="w-full h-full object-cover opacity-50"
-          />
-          <div className="absolute inset-0 flex items-center justify-center text-white text-5xl font-bold bg-opacity-30 hero">
-            {leftCar.name}
-          </div>
-        </div>
-      )}
+    <div className="relative min-h-screen bg">
+      <h1 className="text-6xl text-center pt-10 hero text-black">Cars</h1>
+      <h1 className="text-4xl text-center pt-5 description text-bold text-black">
+        Which car is more expensive? Tap on it!
+      </h1>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-14">
+        <div className="flex h-170 w-340 z-20">
+          <StreakCounter count={streak} />
 
-      {/* Right Car */}
-      {rightCar && (
-        <div
-          className={`w-1/2 h-full relative cursor-pointer border-8 transition-all duration-300 ${
-            resultColor.right
-              ? resultColor.right
-              : "hover:border-white border-transparent"
-          } transition-all duration-300`}
-          onClick={() => handleSelection("right")}
-        >
-          <img
-            src={rightCar.url}
-            alt={rightCar.name}
-            className="w-full h-full object-cover opacity-50"
-          />
-          <div className="absolute inset-0 flex items-center justify-center text-white text-5xl font-bold bg-opacity-30 hero">
-            {rightCar.name}
-          </div>
-        </div>
-      )}
+          {leftCar && (
+            <div
+              className={`w-1/2 h-full relative cursor-pointer border-8 transition-all duration-300 ${
+                resultColor.left
+                  ? resultColor.left
+                  : "hover:border-black border-transparent"
+              }`}
+              style={{marginRight: "-0.3rem"}}
+              onClick={() => handleSelection("left")}
+            >
+              <img
+                src={leftCar.url}
+                alt={leftCar.name}
+                className="w-full h-full object-cover brightness-40"
+              />
+              <div className="absolute inset-0 flex items-center justify-center text-white text-5xl font-bold hero">
+                {leftCar.name}
+              </div>
+            </div>
+          )}
 
-      {gameOver && <GameOverModal onRestart={restartGame} />}
+          {rightCar && (
+            <div
+              className={`w-1/2 h-full relative cursor-pointer border-8 transition-all duration-300 ${
+                resultColor.right
+                  ? resultColor.right
+                  : "hover:border-black border-transparent"
+              } transition-all duration-300`}
+              style={{marginLeft: "-0.3rem"}}
+              onClick={() => handleSelection("right")}
+            >
+              <img
+                src={rightCar.url}
+                alt={rightCar.name}
+                className="w-full h-full object-cover brightness-40"
+              />
+              <div className="absolute inset-0 bot flex items-center justify-center text-white text-5xl font-bold hero">
+                {rightCar.name}
+              </div>
+            </div>
+          )}
+
+          {gameOver && <GameOverModal onRestart={restartGame} />}
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 }
