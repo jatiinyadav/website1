@@ -9,6 +9,7 @@ import Buttons from "@/components/buttons";
 import PlaneAnimation from "@/components/planeanimation";
 import VerticalSpinner from "@/components/verticalspinner";
 import HorizontalSpinner from "@/components/horizontalspinner";
+import "../styles/globals.css"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,7 +52,7 @@ export default function Home() {
 
     // Animate fade in line by line
     lineSpans.forEach((lineSpan) => {
-      tl.to(lineSpan, { duration: 0.6, opacity: 1, ease: "power1.out" });
+      tl.to(lineSpan, { duration: 0.5, opacity: 1, ease: "power1.out" });
     });
 
     // Fade in description after heading lines
@@ -68,7 +69,7 @@ export default function Home() {
         horizontalLeftScroll.current,
         horizontalRightScroll.current,
       ],
-      { opacity: 1, y: 0, duration: 0.6, ease: "power1.out" },
+      { opacity: 1, y: 0, duration: 0.5, ease: "power1.out" },
       "-=0.5"
     );
   }, []);
