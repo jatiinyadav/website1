@@ -86,6 +86,7 @@ export default function Home() {
             <h1
               ref={headingRef}
               className="text-[2.50rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center"
+              style={{fontFamily: "Irish Grover"}}
             ></h1>
           </div>
 
