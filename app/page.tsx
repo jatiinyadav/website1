@@ -84,7 +84,7 @@ export default function Home() {
           <div className="mb-10">
             <h1
               ref={headingRef}
-              className="description text-[2.50rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center"
+              className="hero text-[2.50rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center"
             ></h1>
           </div>
 

@@ -6,7 +6,7 @@ type GameOverModalProps = {
 
 export default function GameOverModal({ onRestart }: GameOverModalProps) {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-opacity-70 z-50">
       <div className="bg-[#1d232a] rounded-2xl p-8 shadow-xl text-center max-w-sm w-full">
         <h2 className="text-4xl font-bold text-white mb-4 hero">Game Over</h2>
         <div className="flex gap-10 items-center">

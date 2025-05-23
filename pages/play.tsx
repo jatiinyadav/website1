@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import "../styles/globals.css";
 import GameOverModal from "@/components/gameover";
@@ -139,7 +137,7 @@ export default function Play() {
           <img
             src={leftCar.url}
             alt={leftCar.name}
-            className="w-full h-full object-cover opacity-25"
+            className="w-full h-full object-cover opacity-50"
           />
           <div className="absolute inset-0 flex items-center justify-center text-white text-5xl font-bold bg-opacity-30 hero">
             {leftCar.name}
@@ -160,7 +158,7 @@ export default function Play() {
           <img
             src={rightCar.url}
             alt={rightCar.name}
-            className="w-full h-full object-cover opacity-25"
+            className="w-full h-full object-cover opacity-50"
           />
           <div className="absolute inset-0 flex items-center justify-center text-white text-5xl font-bold bg-opacity-30 hero">
             {rightCar.name}
