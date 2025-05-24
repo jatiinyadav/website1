@@ -141,7 +141,7 @@ export default function Play() {
         Which car is more expensive? Tap on it!
       </h1>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-14">
-        <div className="flex h-170 w-340 z-20">
+        <div className="flex h-180 w-380 z-20">
           <StreakCounter count={streak} />
 
           {leftCar && (

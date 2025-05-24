@@ -2,51 +2,51 @@
     {
         "name": "Ferrari 488 GTB",
         "price": 2.62,
-        "url": "/images/cars/ferrari.jpg"
+        "url": "/images/cars/ferrari.webp"
     },
     {
         "name": "Lamborghini Aventador",
         "price": 3.94,
-        "url": "/images/cars/aventador.jpg"
+        "url": "/images/cars/aventador.webp"
     },
     {
         "name": "Porsche 911 Turbo S",
         "price": 2.16,
-        "url": "/images/cars/porshe.jpg"
+        "url": "/images/cars/porshe.webp"
     },
     {
         "name": "Bugatti Chiron",
         "price": 30.00,
-        "url": "/images/cars/bugatti.jpg"
+        "url": "/images/cars/bugatti.webp"
     },
     {
         "name": "McLaren 720S",
         "price": 3.02,
-        "url": "/images/cars/mclaren.jpg"
+        "url": "/images/cars/mclaren.webp"
     },
     {
         "name": "Tesla Model S Plaid",
         "price": 0.90,
-        "url": "/images/cars/tesla.jpg"
+        "url": "/images/cars/tesla.webp"
     },
     {
         "name": "BMW M5 CS",
         "price": 1.12,
-        "url": "/images/cars/bmw.jpg"
+        "url": "/images/cars/bmw.webp"
     },
     {
         "name": "Audi RS7 Sportback",
         "price": 1.25,
-        "url": "/images/cars/audi.jpg"
+        "url": "/images/cars/audi.webp"
     },
     {
         "name": "Mercedes-AMG GT R",
         "price": 1.63,
-        "url": "/images/cars/amg.jpg"
+        "url": "/images/cars/amg.webp"
     },
     {
         "name": "Koenigsegg Jesko",
         "price": 30.00,
-        "url": "/images/cars/jesko.jpg"
+        "url": "/images/cars/jesko.webp"
     }
 ]
