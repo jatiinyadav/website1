@@ -1,17 +1,26 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import data from "../cars.json";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Buttons from "@/components/buttons";
 import PlaneAnimation from "@/components/planeanimation";
 import VerticalSpinner from "@/components/verticalspinner";
 import HorizontalSpinner from "@/components/horizontalspinner";
-import "../styles/globals.css"
+import "../styles/globals.css";
+import Game from "@/components/Game";
 
 gsap.registerPlugin(ScrollTrigger);
+
+type Car = {
+  name: string;
+  price: number;
+  url: string;
+  shown?: boolean;
+};
 
 export default function Home() {
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -21,8 +30,21 @@ export default function Home() {
   const verticalRightScroll = useRef<HTMLDivElement>(null);
   const horizontalRightScroll = useRef<HTMLDivElement>(null);
   const planeRef = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(true);
+  const [cars, setCars] = useState<Car[]>([]);
 
   useEffect(() => {
+    const fetchCarData = async () => {
+      const initializedCars = data.map((car: Car) => ({
+        ...car,
+        shown: false,
+      }));
+      console.log(initializedCars);
+
+      setCars(initializedCars);
+    };
+    fetchCarData();
+
     const headingEl = headingRef.current;
     if (!headingEl) return;
 
@@ -74,69 +96,91 @@ export default function Home() {
     );
   }, []);
 
+  const hideLanding = () => {
+    setShow(false);
+  };
+
   return (
     <div className="relative min-h-screen bg">
       {/* <Header /> */}
-      <div
-        className="flex min-h-screen items-center justify-center text-center px-4 text-[#121A2A]"
-        style={{ zIndex: 2 }}
-      >
-        <div>
-          <div className="mb-10">
-            <h1
-              ref={headingRef}
-              className="hero text-[2.50rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center"
-            ></h1>
-          </div>
-
+      {show && (
+        <>
           <div
-            ref={descriptionRef}
-            className="opacity-0 translate-y-6"
-            style={{ transform: "translateY(24px)" }}
+            className="flex min-h-screen items-center justify-center text-center px-4 text-[#121A2A]"
+            style={{ zIndex: 2 }}
           >
-            <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-10 md:mb-14 text-center description px-4 sm:px-6 md:px-0">
-              <p>
-                Guess which topic ranks higher and prove you're trend-savvy.
-              </p>
-              <p>Only 1% get past 10 — are you one of them?</p>
-            </div>
+            <div>
+              <div className="mb-10">
+                <h1
+                  ref={headingRef}
+                  className="hero text-[2.50rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center"
+                ></h1>
+              </div>
 
-            <div className="flex justify-center">
-              <Buttons />
+              <div
+                ref={descriptionRef}
+                className="opacity-0 translate-y-6"
+                style={{ transform: "translateY(24px)" }}
+              >
+                <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-10 md:mb-14 text-center description px-4 sm:px-6 md:px-0">
+                  <p>
+                    Guess which topic ranks higher and prove you're trend-savvy.
+                  </p>
+                  <p>Only 1% get past 10 — are you one of them?</p>
+                </div>
+
+                <div className="flex justify-center">
+                  <Buttons />
+                  <button
+                    type="button"
+                    className="text-gray-900 bg-[#fff8e6] border-2 border-gray-900 text-sm sm:text-base md:text-md rounded-lg px-6 sm:px-8 py-2 sm:py-2.5 cursor-pointer"
+                    onClick={hideLanding}
+                  >
+                    Cars
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      
-      {/* <div className="opacity-0" ref={planeRef}>
-        <PlaneAnimation />
-      </div> */}
-      <div className="hidden lg:block">
-        <div
-          className="absolute top-0 left-50 opacity-0"
-          ref={verticalLeftScroll}
-        >
-          <VerticalSpinner direction="down" position="right" offset={160} />
-        </div>
-        <div
-          className="absolute top-0 right-50 opacity-0"
-          ref={verticalRightScroll}
-        >
-          <VerticalSpinner direction="up" position="left" offset={160} />
-        </div>
-      </div>
-
-      <div className="block lg:hidden">
-        <div className="absolute top-0 opacity-0" ref={horizontalLeftScroll}>
-          <HorizontalSpinner direction="left" position="top" offset={100} />
-        </div>
-        <div
-          className="absolute bottom-0 opacity-0"
-          ref={horizontalRightScroll}
-        >
-          <HorizontalSpinner direction="right" position="bottom" offset={20} />
-        </div>
-      </div>
+          <div className="hidden lg:block">
+            <div
+              className="absolute top-0 left-50 opacity-0"
+              ref={verticalLeftScroll}
+            >
+              <VerticalSpinner direction="down" position="right" offset={160} />
+            </div>
+            <div
+              className="absolute top-0 right-50 opacity-0"
+              ref={verticalRightScroll}
+            >
+              <VerticalSpinner direction="up" position="left" offset={160} />
+            </div>
+          </div>
+          <div className="block lg:hidden">
+            <div
+              className="absolute top-0 opacity-0"
+              ref={horizontalLeftScroll}
+            >
+              <HorizontalSpinner direction="left" position="top" offset={100} />
+            </div>
+            <div
+              className="absolute bottom-0 opacity-0"
+              ref={horizontalRightScroll}
+            >
+              <HorizontalSpinner
+                direction="right"
+                position="bottom"
+                offset={20}
+              />
+            </div>
+          </div>
+        </>
+      )}
+      {!show && (
+        <>
+          <Game leftCar={cars[0]} rightCar={cars[1]} />
+        </>
+      )}
 
       <Footer />
 
