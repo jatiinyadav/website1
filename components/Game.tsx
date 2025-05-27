@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState } from "react";
 
 type Car = {
   name: string;
@@ -13,6 +14,7 @@ type StreakCounterProps = {
 };
 
 const Game: React.FC<StreakCounterProps> = ({ leftCar, rightCar }) => {
+  const [loaded, setLoaded] = useState(false);
   return (
     <>
       <div className="flex h-180 w-380 z-20">
@@ -25,7 +27,10 @@ const Game: React.FC<StreakCounterProps> = ({ leftCar, rightCar }) => {
               src={leftCar.url}
               alt={leftCar.name}
               fill
-              className="object-cover brightness-40"
+              onLoadingComplete={() => setLoaded(true)}
+              className={`object-cover brightness-40 transition-opacity duration-700 ${
+                loaded ? "opacity-100" : "opacity-0"
+              }`}
             />
           </div>
           <div className="absolute inset-0 flex items-center justify-center text-white text-5xl font-bold hero">
@@ -43,7 +48,10 @@ const Game: React.FC<StreakCounterProps> = ({ leftCar, rightCar }) => {
               src={rightCar.url}
               alt={rightCar.name}
               fill
-              className="object-cover brightness-40"
+              onLoadingComplete={() => setLoaded(true)}
+              className={`object-cover brightness-40 transition-opacity duration-700 ${
+                loaded ? "opacity-100" : "opacity-0"
+              }`}
             />
           </div>
           <div className="absolute inset-0 bot flex items-center justify-center text-white text-5xl font-bold hero">
