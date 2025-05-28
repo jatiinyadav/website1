@@ -20,14 +20,15 @@ export default function Home() {
 
   useEffect(() => {
     const fetchDataForComparison = async () => {
-      const initialized = data.map((c: Comparison) => ({
-        ...c,
-        shown: false,
-      }));
+      const initialized = data.map((c: Comparison) => {
+        const img = new Image();
+        img.src = c.url;
+        return {...c, shown: false}
+      });
       setComparisonData(initialized);
     };
     fetchDataForComparison();
-  }, []);
+  }, [data]);
 
   return (
     <>
