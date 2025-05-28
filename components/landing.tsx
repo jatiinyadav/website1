@@ -10,26 +10,16 @@ import PlaneAnimation from "@/components/planeanimation";
 import VerticalSpinner from "@/components/verticalspinner";
 import HorizontalSpinner from "@/components/horizontalspinner";
 import "../styles/globals.css";
-import Game from "@/components/Game";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Comparison = {
-  name: string;
-  price: number;
-  url: string;
-  shown?: boolean;
-};
-
 type Props = {
-  dataForComparison: Comparison[];
   setShowGame: (val: boolean) => void;
   setGameHeader: (val: string) => void;
   setGameDescription: (val: string) => void;
 };
 
 const Landing: React.FC<Props> = ({
-  dataForComparison,
   setShowGame,
   setGameHeader,
   setGameDescription,
@@ -41,10 +31,8 @@ const Landing: React.FC<Props> = ({
   const verticalRightScroll = useRef<HTMLDivElement>(null);
   const horizontalRightScroll = useRef<HTMLDivElement>(null);
   const planeRef = useRef<HTMLDivElement>(null);
-  const [comparison, setComparison] = useState<Comparison[]>([]);
 
   useEffect(() => {
-    setComparison(dataForComparison);
 
     const headingEl = headingRef.current;
     if (!headingEl) return;

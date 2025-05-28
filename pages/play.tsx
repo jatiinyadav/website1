@@ -180,7 +180,7 @@ export default function Play() {
                 alt={rightCar.name}
                 className="w-full h-full object-cover brightness-40"
               />
-              <div className="absolute inset-0 bot flex items-center justify-center text-white text-5xl font-bold hero">
+              <div className="absolute inset-0 flex items-center justify-center text-white text-5xl font-bold hero">
                 {rightCar.name}
               </div>
             </div>

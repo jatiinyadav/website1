@@ -34,7 +34,6 @@ export default function Home() {
       <div className="relative min-h-screen bg">
         {!showGame && (
           <Landing
-            dataForComparison={comparisonData}
             setShowGame={setShowGame}
             setGameHeader={setGameHeader}
             setGameDescription={setGameDescription}
@@ -42,8 +41,7 @@ export default function Home() {
         )}
         {showGame && (
           <Game
-            leftItem={comparisonData[0]}
-            rightItem={comparisonData[1]}
+            dataForComparison={comparisonData}
             header={{
               heading: gameHeader,
               description: gameDescription,
