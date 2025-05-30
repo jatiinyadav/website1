@@ -2,8 +2,8 @@ const sharp = require("sharp");
 const fs = require("fs-extra");
 const path = require("path");
 
-const inputDir = path.join(__dirname, "public/images/cars");
-const outputDir = path.join(__dirname, "public/images/carrs");
+const inputDir = path.join(__dirname, "public/images/carss");
+const outputDir = path.join(__dirname, "public/images/cars");
 
 (async () => {
   await fs.ensureDir(outputDir);

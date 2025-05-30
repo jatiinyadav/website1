@@ -48,5 +48,90 @@
         "name": "Koenigsegg Jesko",
         "price": 30.00,
         "url": "/images/cars/jesko.webp"
+    },
+    {
+        "name": "Aston Martin DBS Superleggera",
+        "price": 4.50,
+        "url": "/images/cars/dbs.webp"
+    },
+    {
+        "name": "Rolls-Royce Ghost",
+        "price": 7.95,
+        "url": "/images/cars/ghost.webp"
+    },
+    {
+        "name": "Bentley Continental GT",
+        "price": 5.20,
+        "url": "/images/cars/continental.webp"
+    },
+    {
+        "name": "Lexus LC 500h",
+        "price": 2.40,
+        "url": "/images/cars/lc500h.webp"
+    },
+    {
+        "name": "Nissan GT-R",
+        "price": 2.15,
+        "url": "/images/cars/gtr.webp"
+    },
+    {
+        "name": "Jaguar F-Type R",
+        "price": 2.00,
+        "url": "/images/cars/f-type.webp"
+    },
+    {
+        "name": "Chevrolet Corvette Z06",
+        "price": 1.80,
+        "url": "/images/cars/corvette.webp"
+    },
+    {
+        "name": "Ford Mustang GT",
+        "price": 0.90,
+        "url": "/images/cars/mustang.webp"
+    },
+    {
+        "name": "Maserati MC20",
+        "price": 3.65,
+        "url": "/images/cars/maserati.webp"
+    },
+    {
+        "name": "Pagani Huayra",
+        "price": 25.00,
+        "url": "/images/cars/huayra.webp"
+    },
+    {
+        "name": "Cadillac CT5-V Blackwing",
+        "price": 1.25,
+        "url": "/images/cars/ctv5.webp"
+    },
+    {
+        "name": "Toyota GR Supra",
+        "price": 1.00,
+        "url": "/images/cars/supra.webp"
+    },
+    {
+        "name": "Alfa Romeo Giulia Quadrifoglio",
+        "price": 1.75,
+        "url": "/images/cars/giulia.webp"
+    },
+    {
+        "name": "Pininfarina Battista",
+        "price": 22.00,
+        "url": "/images/cars/battista.webp"
+    },
+    {
+        "name": "Lamborghini Huracán EVO",
+        "price": 4.10,
+        "url": "/images/cars/huracan.webp"
+    },
+    {
+        "name": "Ferrari SF90 Stradale",
+        "price": 7.50,
+        "url": "/images/cars/sf90.webp"
+    },
+    {
+        "name": "Rolls-Royce Cullinan",
+        "price": 8.20,
+        "url": "/images/cars/cullinan.webp"
     }
 ]

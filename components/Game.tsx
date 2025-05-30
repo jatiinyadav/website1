@@ -30,15 +30,17 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
   });
   const [gameOver, setGameOver] = useState(false);
   const [streak, setStreak] = useState(0);
+  const [globalStreak, setGlobalStreak] = useState(0);
   const [comparison, setComparison] = useState<Comparison[]>(dataForComparison);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [lastCorrectSide, setLastCorrectSide] = useState<
+    "left" | "right" | null
+  >(null);
 
   useEffect(() => {
     const [a, b] = getTwoRandomOptions(comparison);
     setLeftOption(a);
     setRightOption(b);
-
-    console.log(leftOption);
-    console.log(b);
   }, []);
 
   const handleSelection = (side: "left" | "right") => {
@@ -48,10 +50,6 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
     const selectedCar = side === "left" ? leftOption : rightOption;
     const otherCar = side === "left" ? rightOption : leftOption;
     const isCorrect = selectedCar.price >= otherCar.price;
-
-    console.log(leftOption);
-    console.log(rightOption);
-    console.log(isCorrect);
 
     // Set border color
     setBorderColor({
@@ -71,8 +69,10 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
 
     // If wrong, end game after delay
     if (!isCorrect) {
+      console.log("Selected Wrong");
+      
       setTimeout(() => setGameOver(true), 300);
-      setStreak(0);
+      setGlobalStreak(0);
       return;
     }
 
@@ -85,33 +85,52 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
     setComparison(updatedData);
 
     // Update streak counter
-    setStreak((prev) => prev + 1);
+    setGlobalStreak((prev) => prev + 1);
 
-    // Find a new comparsion
-    const newComparison = updatedData.find(
-      (c) => !c.shown && c.name !== selectedCar.name
-    );
+    // Update streak and correct side
+    const correctSide =
+      leftOption.price >= rightOption.price ? "left" : "right";
+    const nextStreak = correctSide === lastCorrectSide ? streak + 1 : 1;
 
-    // If no new comparsion is left
-    if (!newComparison) {
-      setTimeout(() => setGameOver(true), 1000);
+    setStreak(nextStreak);
+    setLastCorrectSide(correctSide);
+
+    // Decide how to advance the window
+    const step = nextStreak >= 2 ? 2 : 1;
+    const newIndex = currentIndex + step;
+
+    // If no more images to show
+    if (newIndex + 1 >= updatedData.length) {
+      console.log("No more images to show");
+      
+      setTimeout(() => setGameOver(true), 300);
       return;
+    }
+
+    // Determine next two options
+    let nextLeft = updatedData[newIndex];
+    let nextRight = updatedData[newIndex + 1];
+
+    // Flip correct side if streak is 2+
+    if (nextStreak >= 2 && lastCorrectSide) {
+      const nextCorrect = nextLeft.price >= nextRight.price ? "left" : "right";
+      if (nextCorrect === lastCorrectSide) {
+        // flip
+        [nextLeft, nextRight] = [nextRight, nextLeft];
+      }
     }
 
     // Replace the incorrect car with new one
     setTimeout(() => {
-      if (side === "left") {
-        setLeftOption(newComparison);
-      } else {
-        setRightOption(newComparison);
-      }
-
+      setLeftOption(nextLeft);
+      setRightOption(nextRight);
+      setCurrentIndex(newIndex);
       setBorderColor({ leftOptionBorder: "", rightOptionBorder: "" });
-    }, 500);
+    }, 300);
   };
 
   const restartGame = () => {
-    setStreak(0);
+    setGlobalStreak(0);
     setGameOver(false);
     setBorderColor({ leftOptionBorder: "", rightOptionBorder: "" });
     const initialized = comparison.map((c: Comparison) => ({
@@ -133,23 +152,22 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
   return (
     <>
       <div className="relative min-h-screen bg">
-        <h1 className="text-6xl text-center pt-10 hero text-black">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center pt-4 sm:pt-6 text-black font-bold hero">
           {header.heading}
         </h1>
-        <h1 className="text-4xl text-center pt-5 description text-bold text-black">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center pt-3 sm:pt-5 text-black description">
           {header.description}
-        </h1>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-14">
-          <div className="flex h-180 w-380 z-20">
-            <StreakCounter count={streak} />
+        </h2>
+
+        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-[20%] bottom-0">
+          <div className="flex flex-col md:flex-row justify-center items-center min-w-screen h-[80vh] z-20">
+            <StreakCounter count={globalStreak} />
             {leftOption && (
               <div
-                className={`w-1/2 h-full relative cursor-pointer border-8 transition-all duration-300 ${
-                  borderColor.leftOptionBorder
-                    ? borderColor.leftOptionBorder
-                    : "hover:border-black border-transparent"
+                className={`w-full h-full relative cursor-pointer transition-all duration-300 ${
+                  borderColor.leftOptionBorder ? "wrongImageSelected" : ""
                 }`}
-                style={{ marginRight: "-0.3rem" }}
+                onClick={() => handleSelection("left")}
               >
                 <div className="relative w-full h-full">
                   <Image
@@ -157,37 +175,40 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
                     alt={leftOption.name}
                     fill
                     onLoadingComplete={() => setLoaded(true)}
-                    onClick={() => handleSelection("left")}
                     className={`object-cover brightness-40 transition-opacity duration-700 ${
                       loaded ? "opacity-100" : "opacity-0"
                     }`}
                   />
                 </div>
                 <div
-                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-white text-5xl font-bold hero ${
+                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-white text-4xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold hero ${
                     loaded ? "opacity-100" : "opacity-0"
                   }`}
                 >
                   {leftOption.name}
+                </div>
+                <div
+                  className={`absolute bottom-0 w-full text-left text-white text-sm description pl-2 ${
+                    loaded ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  Image
                 </div>
               </div>
             )}
 
             {rightOption && (
               <div
-                className={`w-1/2 h-full relative cursor-pointer border-8 transition-all duration-300 ${
-                  borderColor.rightOptionBorder
-                    ? borderColor.rightOptionBorder
-                    : "hover:border-black border-transparent"
+                className={`w-full h-full relative cursor-pointer transition-all duration-300 ${
+                  borderColor.leftOptionBorder ? "wrongImageSelected" : ""
                 }`}
-                style={{ marginLeft: "-0.3rem" }}
+                onClick={() => handleSelection("right")}
               >
                 <div className="relative w-full h-full">
                   <Image
                     src={rightOption.url}
                     alt={rightOption.name}
                     fill
-                    onClick={() => handleSelection("right")}
                     onLoadingComplete={() => setLoaded(true)}
                     className={`object-cover brightness-40 transition-opacity duration-700 ${
                       loaded ? "opacity-100" : "opacity-0"
@@ -195,11 +216,18 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
                   />
                 </div>
                 <div
-                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-white text-5xl font-bold hero ${
+                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-white text-4xl sm:text-3xl md:text-4xl lg:text-6xl font-bold hero ${
                     loaded ? "opacity-100" : "opacity-0"
                   }`}
                 >
                   {rightOption.name}
+                </div>
+                <div
+                  className={`absolute bottom-0 w-full text-right text-white text-sm description pr-2 ${
+                    loaded ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  Image
                 </div>
               </div>
             )}
