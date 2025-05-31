@@ -70,7 +70,7 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
     // If wrong, end game after delay
     if (!isCorrect) {
       console.log("Selected Wrong");
-      
+
       setTimeout(() => setGameOver(true), 300);
       setGlobalStreak(0);
       return;
@@ -102,7 +102,7 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
     // If no more images to show
     if (newIndex + 1 >= updatedData.length) {
       console.log("No more images to show");
-      
+
       setTimeout(() => setGameOver(true), 300);
       return;
     }
@@ -174,6 +174,9 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
                     src={leftOption.url}
                     alt={leftOption.name}
                     fill
+                    unoptimized
+                    priority
+                    loading="eager"
                     onLoadingComplete={() => setLoaded(true)}
                     className={`object-cover brightness-40 transition-opacity duration-700 ${
                       loaded ? "opacity-100" : "opacity-0"
@@ -209,6 +212,9 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
                     src={rightOption.url}
                     alt={rightOption.name}
                     fill
+                    unoptimized
+                    priority
+                    loading="eager"
                     onLoadingComplete={() => setLoaded(true)}
                     className={`object-cover brightness-40 transition-opacity duration-700 ${
                       loaded ? "opacity-100" : "opacity-0"
