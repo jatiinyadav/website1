@@ -1,137 +1,138 @@
 [
     {
-        "name": "Ferrari 488 GTB",
-        "price": 2.62,
-        "url": "/images/cars/ferrari.webp"
+      "name": "Ferrari 488 GTB",
+      "count": "315,662",
+      "url": "/images/cars/ferrari.webp"
     },
     {
-        "name": "Lamborghini Aventador",
-        "price": 3.94,
-        "url": "/images/cars/aventador.webp"
+      "name": "Lamborghini Aventador",
+      "count": "474,698",
+      "url": "/images/cars/aventador.webp"
     },
     {
-        "name": "Porsche 911 Turbo S",
-        "price": 2.16,
-        "url": "/images/cars/porshe.webp"
+      "name": "Porsche 911 Turbo S",
+      "count": "260,241",
+      "url": "/images/cars/porshe.webp"
     },
     {
-        "name": "Bugatti Chiron",
-        "price": 30.00,
-        "url": "/images/cars/bugatti.webp"
+      "name": "Bugatti Chiron",
+      "count": "3,614,457",
+      "url": "/images/cars/bugatti.webp"
     },
     {
-        "name": "McLaren 720S",
-        "price": 3.02,
-        "url": "/images/cars/mclaren.webp"
+      "name": "McLaren 720S",
+      "count": "363,855",
+      "url": "/images/cars/mclaren.webp"
     },
     {
-        "name": "Tesla Model S Plaid",
-        "price": 0.90,
-        "url": "/images/cars/tesla.webp"
+      "name": "Tesla Model S Plaid",
+      "count": "108,434",
+      "url": "/images/cars/tesla.webp"
     },
     {
-        "name": "BMW M5 CS",
-        "price": 1.12,
-        "url": "/images/cars/bmw.webp"
+      "name": "BMW M5 CS",
+      "count": "134,940",
+      "url": "/images/cars/bmw.webp"
     },
     {
-        "name": "Audi RS7 Sportback",
-        "price": 1.25,
-        "url": "/images/cars/audi.webp"
+      "name": "Audi RS7 Sportback",
+      "count": "150,602",
+      "url": "/images/cars/audi.webp"
     },
     {
-        "name": "Mercedes-AMG GT R",
-        "price": 1.63,
-        "url": "/images/cars/amg.webp"
+      "name": "Mercedes-AMG GT R",
+      "count": "196,386",
+      "url": "/images/cars/amg.webp"
     },
     {
-        "name": "Koenigsegg Jesko",
-        "price": 30.00,
-        "url": "/images/cars/jesko.webp"
+      "name": "Koenigsegg Jesko",
+      "count": "3,614,457",
+      "url": "/images/cars/jesko.webp"
     },
     {
-        "name": "Aston Martin DBS Superleggera",
-        "price": 4.50,
-        "url": "/images/cars/dbs.webp"
+      "name": "Aston Martin DBS Superleggera",
+      "count": "542,168",
+      "url": "/images/cars/dbs.webp"
     },
     {
-        "name": "Rolls-Royce Ghost",
-        "price": 7.95,
-        "url": "/images/cars/ghost.webp"
+      "name": "Rolls-Royce Ghost",
+      "count": "957,831",
+      "url": "/images/cars/ghost.webp"
     },
     {
-        "name": "Bentley Continental GT",
-        "price": 5.20,
-        "url": "/images/cars/continental.webp"
+      "name": "Bentley Continental GT",
+      "count": "626,506",
+      "url": "/images/cars/continental.webp"
     },
     {
-        "name": "Lexus LC 500h",
-        "price": 2.40,
-        "url": "/images/cars/lc500h.webp"
+      "name": "Lexus LC 500h",
+      "count": "289,157",
+      "url": "/images/cars/lc500h.webp"
     },
     {
-        "name": "Nissan GT-R",
-        "price": 2.15,
-        "url": "/images/cars/gtr.webp"
+      "name": "Nissan GT-R",
+      "count": "259,036",
+      "url": "/images/cars/gtr.webp"
     },
     {
-        "name": "Jaguar F-Type R",
-        "price": 2.00,
-        "url": "/images/cars/f-type.webp"
+      "name": "Jaguar F-Type R",
+      "count": "240,963",
+      "url": "/images/cars/f-type.webp"
     },
     {
-        "name": "Chevrolet Corvette Z06",
-        "price": 1.80,
-        "url": "/images/cars/corvette.webp"
+      "name": "Chevrolet Corvette Z06",
+      "count": "216,867",
+      "url": "/images/cars/corvette.webp"
     },
     {
-        "name": "Ford Mustang GT",
-        "price": 0.90,
-        "url": "/images/cars/mustang.webp"
+      "name": "Ford Mustang GT",
+      "count": "108,434",
+      "url": "/images/cars/mustang.webp"
     },
     {
-        "name": "Maserati MC20",
-        "price": 3.65,
-        "url": "/images/cars/maserati.webp"
+      "name": "Maserati MC20",
+      "count": "439,759",
+      "url": "/images/cars/maserati.webp"
     },
     {
-        "name": "Pagani Huayra",
-        "price": 25.00,
-        "url": "/images/cars/huayra.webp"
+      "name": "Pagani Huayra",
+      "count": "3,012,048",
+      "url": "/images/cars/huayra.webp"
     },
     {
-        "name": "Cadillac CT5-V Blackwing",
-        "price": 1.25,
-        "url": "/images/cars/ctv5.webp"
+      "name": "Cadillac CT5-V Blackwing",
+      "count": "150,602",
+      "url": "/images/cars/ctv5.webp"
     },
     {
-        "name": "Toyota GR Supra",
-        "price": 1.00,
-        "url": "/images/cars/supra.webp"
+      "name": "Toyota GR Supra",
+      "count": "120,481",
+      "url": "/images/cars/supra.webp"
     },
     {
-        "name": "Alfa Romeo Giulia Quadrifoglio",
-        "price": 1.75,
-        "url": "/images/cars/giulia.webp"
+      "name": "Alfa Romeo Giulia Quadrifoglio",
+      "count": "210,843",
+      "url": "/images/cars/giulia.webp"
     },
     {
-        "name": "Pininfarina Battista",
-        "price": 22.00,
-        "url": "/images/cars/battista.webp"
+      "name": "Pininfarina Battista",
+      "count": "2,650,602",
+      "url": "/images/cars/battista.webp"
     },
     {
-        "name": "Lamborghini Huracán EVO",
-        "price": 4.10,
-        "url": "/images/cars/huracan.webp"
+      "name": "Lamborghini Huracán EVO",
+      "count": "493,976",
+      "url": "/images/cars/huracan.webp"
     },
     {
-        "name": "Ferrari SF90 Stradale",
-        "price": 7.50,
-        "url": "/images/cars/sf90.webp"
+      "name": "Ferrari SF90 Stradale",
+      "count": "903,614",
+      "url": "/images/cars/sf90.webp"
     },
     {
-        "name": "Rolls-Royce Cullinan",
-        "price": 8.20,
-        "url": "/images/cars/cullinan.webp"
+      "name": "Rolls-Royce Cullinan",
+      "count": "987,952",
+      "url": "/images/cars/cullinan.webp"
     }
-]
+  ]
+  

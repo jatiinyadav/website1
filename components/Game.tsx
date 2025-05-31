@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import GameOverModal from "./gameover";
 import StreakCounter from "./streak";
 import Buttons from "./buttons";
+import cars from "../cars.json";
+import animals from "../animals.json";
 
 type Comparison = {
   name: string;
-  price: number;
+  count: number | string;
   url: string;
   shown?: boolean;
 };
@@ -17,11 +19,15 @@ type Header = {
 };
 
 type StreakCounterProps = {
-  dataForComparison: Comparison[];
   header: Header;
 };
 
-const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
+const Game: React.FC<StreakCounterProps> = ({ header }) => {
+  const allDataMap: Record<string, Comparison[]> = {
+    cars,
+    animals,
+  };
+
   const [loaded, setLoaded] = useState(false);
   const [leftOption, setLeftOption] = useState<Comparison>();
   const [rightOption, setRightOption] = useState<Comparison>();
@@ -32,15 +38,20 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
   const [gameOver, setGameOver] = useState(false);
   const [streak, setStreak] = useState(0);
   const [globalStreak, setGlobalStreak] = useState(0);
-  const [comparison, setComparison] = useState<Comparison[]>(dataForComparison);
+  const [comparison, setComparison] = useState<Comparison[]>(
+    allDataMap[header.heading.toLowerCase()]
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lastCorrectSide, setLastCorrectSide] = useState<
     "left" | "right" | null
   >(null);
+  const [gameHeader, setGameHeader] = useState(header.heading);
+  const [gameDescription, setGameDescription] = useState(header.description);
   const [highScore, setHighScore] = useState(0);
 
   useEffect(() => {
-    const [a, b] = getTwoRandomOptions(comparison);
+    setComparison(allDataMap[gameHeader.toLowerCase()]);
+    const [a, b] = getTwoRandomOptions(allDataMap[gameHeader.toLowerCase()]);
     setLeftOption(a);
     setRightOption(b);
 
@@ -48,37 +59,40 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
     if (savedHighScore) {
       setHighScore(parseInt(savedHighScore, 10));
     }
-  }, []);
+    setGlobalStreak(0);
+  }, [gameHeader]);
 
   const handleSelection = (side: "left" | "right") => {
     if (!leftOption || !rightOption) return;
 
     // Check if selected option is correct
-    const selectedCar = side === "left" ? leftOption : rightOption;
-    const otherCar = side === "left" ? rightOption : leftOption;
-    const isCorrect = selectedCar.price >= otherCar.price;
+    const selected = side === "left" ? leftOption : rightOption;
+    const other = side === "left" ? rightOption : leftOption;
+    const isCorrect =
+      Number(selected.count.toString().replace(/,/g, "")) >=
+      Number(other.count.toString().replace(/,/g, ""));
 
     // Set border color
     setBorderColor({
       leftOptionBorder:
         side === "left"
           ? isCorrect
-            ? "border-green-500"
-            : "border-red-500"
-          : "border-transparent",
+            ? "text-green-500"
+            : "text-red-500"
+          : "text-white",
       rightOptionBorder:
         side === "right"
           ? isCorrect
-            ? "border-green-500"
-            : "border-red-500"
-          : "border-transparent",
+            ? "text-green-500"
+            : "text-red-500"
+          : "text-white",
     });
 
     // If wrong, end game after delay
     if (!isCorrect) {
       console.log("Selected Wrong");
 
-      setTimeout(() => setGameOver(true), 300);
+      setTimeout(() => setGameOver(true), 500);
       if (globalStreak > highScore) {
         setHighScore(globalStreak);
         localStorage.setItem("highScore", String(globalStreak));
@@ -87,20 +101,12 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
       return;
     }
 
-    // Mark both the options as shown
-    const updatedData = comparison.map((c: Comparison) =>
-      c.name === leftOption.name || c.name === rightOption.name
-        ? { ...c, shown: true }
-        : c
-    );
-    setComparison(updatedData);
-
     // Update streak counter
     setGlobalStreak((prev) => prev + 1);
 
     // Update streak and correct side
     const correctSide =
-      leftOption.price >= rightOption.price ? "left" : "right";
+      leftOption.count >= rightOption.count ? "left" : "right";
     const nextStreak = correctSide === lastCorrectSide ? streak + 1 : 1;
 
     setStreak(nextStreak);
@@ -108,27 +114,21 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
 
     // Decide how to advance the window
     const step = nextStreak >= 2 ? 2 : 1;
-    const newIndex = currentIndex + step;
+    let newIndex = currentIndex + step;
+    console.log(newIndex);
 
     // If no more images to show
-    if (newIndex + 1 >= updatedData.length) {
-      console.log("No more images to show");
-
-      setTimeout(() => setGameOver(true), 300);
-      if (globalStreak > highScore) {
-        setHighScore(globalStreak);
-        localStorage.setItem("highScore", String(globalStreak));
-      }
-      return;
+    if (newIndex + 1 >= comparison.length) {
+      newIndex = 0;
     }
 
     // Determine next two options
-    let nextLeft = updatedData[newIndex];
-    let nextRight = updatedData[newIndex + 1];
+    let nextLeft = comparison[newIndex];
+    let nextRight = comparison[newIndex + 1];
 
     // Flip correct side if streak is 2+
     if (nextStreak >= 2 && lastCorrectSide) {
-      const nextCorrect = nextLeft.price >= nextRight.price ? "left" : "right";
+      const nextCorrect = nextLeft.count >= nextRight.count ? "left" : "right";
       if (nextCorrect === lastCorrectSide) {
         // flip
         [nextLeft, nextRight] = [nextRight, nextLeft];
@@ -141,7 +141,7 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
       setRightOption(nextRight);
       setCurrentIndex(newIndex);
       setBorderColor({ leftOptionBorder: "", rightOptionBorder: "" });
-    }, 300);
+    }, 800);
   };
 
   const restartGame = () => {
@@ -159,19 +159,23 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
   };
 
   const getTwoRandomOptions = (comparison: Comparison[]) => {
-    const unshown = comparison.filter((c) => !c.shown);
-    const shuffled = [...unshown].sort(() => Math.random() - 0.5);
+    const shuffled = [...comparison].sort(() => Math.random() - 0.5);
     return [shuffled[0], shuffled[1]];
   };
 
   return (
     <>
       <div className="relative min-h-screen bg">
-        <div>
-          <Buttons gap={false} selected={header.heading}/>
+        <div className="pt-8">
+          <Buttons
+            gap={false}
+            selected={header.heading}
+            setGameHeader={setGameHeader}
+            setGameDescription={setGameDescription}
+          />
         </div>
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center pt-3 sm:pt-5 text-black description">
-          {header.description}
+          {gameDescription}
         </h2>
 
         <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-[20%] bottom-0">
@@ -197,11 +201,26 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
                   />
                 </div>
                 <div
-                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-white text-4xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold hero ${
+                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-4xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold hero ${
                     loaded ? "opacity-100" : "opacity-0"
+                  } ${
+                    borderColor.leftOptionBorder
+                      ? `${borderColor.leftOptionBorder}`
+                      : `text-white`
                   }`}
                 >
                   {leftOption.name}
+                </div>
+                <div
+                  className={`mt-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-xl sm:text-xl md:text-2xl lg:text-4xl font-bold hero ${
+                    borderColor.leftOptionBorder
+                      ? `${borderColor.leftOptionBorder} opacity-100`
+                      : `opacity-0`
+                  }`}
+                >
+                  {gameHeader.toLowerCase() === "cars" && "$"}
+                  {leftOption.count}
+                  {gameHeader.toLowerCase() === "animals" && " years"}
                 </div>
                 <div
                   className={`absolute top-0 w-full text-left text-white text-3xl hero p-2 ${
@@ -245,6 +264,28 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
                   }`}
                 >
                   {rightOption.name}
+                </div>
+                <div
+                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-4xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold hero ${
+                    loaded ? "opacity-100" : "opacity-0"
+                  } ${
+                    borderColor.rightOptionBorder
+                      ? `${borderColor.rightOptionBorder}`
+                      : `text-white`
+                  }`}
+                >
+                  {rightOption.name}
+                </div>
+                <div
+                  className={`mt-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-xl sm:text-xl md:text-2xl lg:text-4xl font-bold hero ${
+                    borderColor.rightOptionBorder
+                      ? `${borderColor.rightOptionBorder} opacity-100`
+                      : `opacity-0`
+                  }`}
+                >
+                  {gameHeader.toLowerCase() === "cars" && "$"}
+                  {rightOption.count}
+                  {gameHeader.toLowerCase() === "animals" && " years"}
                 </div>
                 <div
                   className={`absolute bottom-0 w-full text-left text-white text-sm description pl-2 ${

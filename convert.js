@@ -2,8 +2,8 @@ const sharp = require("sharp");
 const fs = require("fs-extra");
 const path = require("path");
 
-const inputDir = path.join(__dirname, "public/images/carss");
-const outputDir = path.join(__dirname, "public/images/cars");
+const inputDir = path.join(__dirname, "public/images/animals");
+const outputDir = path.join(__dirname, "public/images/animalss");
 
 (async () => {
   await fs.ensureDir(outputDir);
@@ -19,7 +19,7 @@ const outputDir = path.join(__dirname, "public/images/cars");
 
     try {
       await sharp(inputPath)
-        .webp({ quality: 30 }) // adjust quality if needed
+        .webp({ quality: 60 }) // adjust quality if needed
         .toFile(outputPath);
 
       console.log(`✅ Converted: ${file}`);

@@ -24,7 +24,7 @@ const Buttons: React.FC<Props> = ({
   const gamePrompts: Record<string, string> = {
     Cars: "Which one is more expensive? Tap on it.",
     Sports: "Which athlete has more titles? Tap on it.",
-    Animals: "Which animal has higher power? Tap on it.",
+    Animals: "Which animal lives longer? Tap to choose.",
     Hollywood: "Which Hollywood star is more popular? Tap on it.",
     Bollywood: "Which Bollywood actor charges more? Tap on it.",
   };
@@ -47,7 +47,7 @@ const Buttons: React.FC<Props> = ({
         duration: 0.3,
         borderRadius: 0,
         margin: 0,
-        padding: "12px 20px", // optional tighter padding
+        padding: "8px 26px", // optional tighter padding
         stagger: 0.05,
       });
 
@@ -74,7 +74,7 @@ const Buttons: React.FC<Props> = ({
     <>
       <div
         className={`flex flex-wrap justify-center ${
-          showGap ? "gap-4 sm:gap-6 md:gap-10" : "gap-0 pt-10"
+          showGap ? "gap-4 sm:gap-6 md:gap-10" : "gap-0"
         } description`}
       >
         {Object.keys(gamePrompts).map((genre) => (

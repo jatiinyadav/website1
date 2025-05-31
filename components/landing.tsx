@@ -90,7 +90,7 @@ const Landing: React.FC<Props> = ({
       {/* <Header /> */}
       <>
         <div
-          className="flex min-h-screen items-center justify-center text-center px-4 text-[#121A2A]"
+          className="flex h-screen items-center justify-center text-center px-4 text-[#121A2A]"
           style={{ zIndex: 2 }}
         >
           <div>
