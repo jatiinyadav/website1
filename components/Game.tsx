@@ -164,9 +164,7 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
             <StreakCounter count={globalStreak} />
             {leftOption && (
               <div
-                className={`w-full h-full relative cursor-pointer transition-all duration-300 ${
-                  borderColor.leftOptionBorder ? "wrongImageSelected" : ""
-                }`}
+                className={`w-full h-full relative cursor-pointer transition-all duration-300`}
                 onClick={() => handleSelection("left")}
               >
                 <div className="relative w-full h-full">
@@ -202,9 +200,7 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
 
             {rightOption && (
               <div
-                className={`w-full h-full relative cursor-pointer transition-all duration-300 ${
-                  borderColor.leftOptionBorder ? "wrongImageSelected" : ""
-                }`}
+                className={`w-full h-full relative cursor-pointer transition-all duration-300`}
                 onClick={() => handleSelection("right")}
               >
                 <div className="relative w-full h-full">
