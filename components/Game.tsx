@@ -36,11 +36,17 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
   const [lastCorrectSide, setLastCorrectSide] = useState<
     "left" | "right" | null
   >(null);
+  const [highScore, setHighScore] = useState(0);
 
   useEffect(() => {
     const [a, b] = getTwoRandomOptions(comparison);
     setLeftOption(a);
     setRightOption(b);
+
+    const savedHighScore = localStorage.getItem("highScore");
+    if (savedHighScore) {
+      setHighScore(parseInt(savedHighScore, 10));
+    }
   }, []);
 
   const handleSelection = (side: "left" | "right") => {
@@ -72,6 +78,12 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
       console.log("Selected Wrong");
 
       setTimeout(() => setGameOver(true), 300);
+      console.log(streak);
+      console.log(highScore);
+      if (globalStreak > highScore) {
+        setHighScore(globalStreak);
+        localStorage.setItem("highScore", String(globalStreak));
+      }
       setGlobalStreak(0);
       return;
     }
@@ -104,6 +116,10 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
       console.log("No more images to show");
 
       setTimeout(() => setGameOver(true), 300);
+      if (globalStreak > highScore) {
+        setHighScore(globalStreak);
+        localStorage.setItem("highScore", String(globalStreak));
+      }
       return;
     }
 
@@ -175,7 +191,7 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
                     unoptimized
                     priority
                     loading="eager"
-                    onLoadingComplete={() => setLoaded(true)}
+                    onLoad={() => setLoaded(true)}
                     className={`object-cover brightness-40 transition-opacity duration-700 ${
                       loaded ? "opacity-100" : "opacity-0"
                     }`}
@@ -189,7 +205,14 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
                   {leftOption.name}
                 </div>
                 <div
-                  className={`absolute bottom-0 w-full text-left text-white text-sm description pl-2 ${
+                  className={`absolute top-0 w-full text-left text-white text-3xl hero p-2 ${
+                    loaded ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  High Score : {highScore}
+                </div>
+                <div
+                  className={`absolute bottom-0 w-full text-left text-white text-sm description pl;-2 ${
                     loaded ? "opacity-100" : "opacity-0"
                   }`}
                 >
@@ -211,7 +234,7 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
                     unoptimized
                     priority
                     loading="eager"
-                    onLoadingComplete={() => setLoaded(true)}
+                    onLoad={() => setLoaded(true)}
                     className={`object-cover brightness-40 transition-opacity duration-700 ${
                       loaded ? "opacity-100" : "opacity-0"
                     }`}
@@ -225,7 +248,7 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
                   {rightOption.name}
                 </div>
                 <div
-                  className={`absolute bottom-0 w-full text-right text-white text-sm description pr-2 ${
+                  className={`absolute bottom-0 w-full text-left text-white text-sm description pl-2 ${
                     loaded ? "opacity-100" : "opacity-0"
                   }`}
                 >
