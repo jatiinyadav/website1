@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import GameOverModal from "./gameover";
 import StreakCounter from "./streak";
+import Buttons from "./buttons";
 
 type Comparison = {
   name: string;
@@ -78,8 +79,6 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
       console.log("Selected Wrong");
 
       setTimeout(() => setGameOver(true), 300);
-      console.log(streak);
-      console.log(highScore);
       if (globalStreak > highScore) {
         setHighScore(globalStreak);
         localStorage.setItem("highScore", String(globalStreak));
@@ -168,9 +167,9 @@ const Game: React.FC<StreakCounterProps> = ({ dataForComparison, header }) => {
   return (
     <>
       <div className="relative min-h-screen bg">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center pt-4 sm:pt-6 text-black font-bold hero">
-          {header.heading}
-        </h1>
+        <div>
+          <Buttons gap={false} selected={header.heading}/>
+        </div>
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center pt-3 sm:pt-5 text-black description">
           {header.description}
         </h2>

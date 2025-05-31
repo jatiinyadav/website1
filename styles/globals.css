@@ -94,3 +94,7 @@ body {
   -moz-box-shadow: inset 0px 0px 0px 10px #f00;
   box-shadow: inset 0px 0px 0px 10px #f00;
 }
+
+.genre-button {
+  transition: none !important;
+}
