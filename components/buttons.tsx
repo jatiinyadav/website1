@@ -22,13 +22,13 @@ const Buttons: React.FC<Props> = ({
   const [selectedGenre, setSelectedGenre] = useState<string>(selected);
 
   const gamePrompts: Record<string, string> = {
-    Cars: "Which one is more expensive? Tap on it.",
-    Sports: "Which athlete has more titles? Tap on it.",
-    Animals: "Which animal lives longer? Tap to choose.",
-    Hollywood: "Which Hollywood star is more popular? Tap on it.",
-    Bollywood: "Which Bollywood actor charges more? Tap on it.",
+    Cars: "Which is pricier? Tap it.",
+    Fruits: "Sweetest fruit? Tap it.",
+    Animals: "Lives longest? Tap it.",
+    Cities: "Most populated? Tap it.",
+    Food: "Highest calories? Tap it.",
   };
-
+  
   const animateButtons = (genre: string) => {
     if (!selectedGenre) {
       setShowGap(false);

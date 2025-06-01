@@ -1,0 +1,153 @@
+[
+    {
+      "name": "Apple",
+      "count": 10.39,
+      "url": "/images/fruits/apple.webp",
+      "credit": "https://unsplash.com/photos/bunch-of-red-apples-wXuzS9xR49M"
+    },
+    {
+      "name": "Banana",
+      "count": 12.23,
+      "url": "/images/fruits/banana.webp",
+      "credit": "https://unsplash.com/photos/yellow-banana-fruit-on-brown-wooden-table-DkTuGvgPotA"
+    },
+    {
+      "name": "Grapes",
+      "count": 15.48,
+      "url": "/images/fruits/grapes.webp",
+      "credit": "https://unsplash.com/photos/a-bunch-of-green-grapes-sitting-on-top-of-a-table-NMkWw9Hq9Sg"
+    },
+    {
+      "name": "Mango",
+      "count": 13.66,
+      "url": "/images/fruits/mango.webp",
+      "credit": "https://unsplash.com/photos/a-close-up-of-a-plate-of-fruit-on-a-table-vxtBBfMTMZ0"
+    },
+    {
+      "name": "Pineapple",
+      "count": 9.85,
+      "url": "/images/fruits/pineapple.webp",
+      "credit": "https://unsplash.com/photos/orange-and-green-pineapple-fruits-ZS_RypKo9sk"
+    },
+    {
+      "name": "Orange",
+      "count": 9.35,
+      "url": "/images/fruits/orange.webp",
+      "credit": "https://unsplash.com/photos/sliced-orange-fruit-on-white-ceramic-plate-pCjw_ygKCv0"
+    },
+    {
+      "name": "Strawberry",
+      "count": 4.89,
+      "url": "/images/fruits/strawberry.webp",
+      "credit": "https://unsplash.com/photos/red-strawberries-on-white-ceramic-plate-I497Uc8xWXQ"
+    },
+    {
+      "name": "Blueberry",
+      "count": 9.96,
+      "url": "/images/fruits/blueberry.webp",
+      "credit": "https://unsplash.com/photos/berry-lot-h4zs8fbybq4"
+    },
+    {
+      "name": "Watermelon",
+      "count": 6.2,
+      "url": "/images/fruits/watermelon.webp",
+      "credit": "https://unsplash.com/photos/watermelon-close-up-photography-aFUHu9WNO3Q"
+    },
+    {
+      "name": "Papaya",
+      "count": 5.9,
+      "url": "/images/fruits/papaya.webp",
+      "credit": "https://unsplash.com/photos/yellow-and-white-flower-petals-hGC5TQtjzFw"
+    },
+    {
+      "name": "Peach",
+      "count": 8.39,
+      "url": "/images/fruits/peach.webp",
+      "credit": "http://unsplash.com/photos/crate-of-reed-fruit-O3TlS547j7k"
+    },
+    {
+      "name": "Pear",
+      "count": 9.75,
+      "url": "/images/fruits/pear.webp",
+      "credit": "https://unsplash.com/photos/green-and-red-apples-and-apples-5lrbbXC_kxA"
+    },
+    {
+      "name": "Cherry",
+      "count": 12.82,
+      "url": "/images/fruits/cherry.webp",
+      "credit": "https://unsplash.com/photos/red-cherry-fruit-in-close-up-photography-OseN2JZdcY4"
+    },
+    {
+      "name": "Kiwi",
+      "count": 8.99,
+      "url": "/images/fruits/kiwi.webp",
+      "credit": "https://unsplash.com/photos/a-close-up-of-a-kiwi-fruit-sliced-in-half-p5Ljx_H2F8o"
+    },
+    {
+      "name": "Plum",
+      "count": 9.92,
+      "url": "/images/fruits/plum.webp",
+      "credit": "https://unsplash.com/photos/bunch-of-round-red-fruits-flGDJzwp8xk"
+    },
+    {
+      "name": "Raspberry",
+      "count": 4.42,
+      "url": "/images/fruits/raspberry.webp",
+      "credit": "https://unsplash.com/photos/macro-photography-of-raspberry-fruits-t0A2NCMhXRQ"
+    },
+    {
+      "name": "Blackberry",
+      "count": 4.88,
+      "url": "/images/fruits/blackberry.webp",
+      "credit": "https://unsplash.com/photos/a-pile-of-blackberries-sitting-on-top-of-a-table-UJ51NmhiHn8"
+    },
+    {
+      "name": "Guava",
+      "count": 5.4,
+      "url": "/images/fruits/guava.webp",
+      "credit": "https://unsplash.com/photos/a-pile-of-green-and-red-fruit-sitting-on-top-of-each-other-74Jt5kp0R9s"
+    },
+    {
+      "name": "Pomegranate",
+      "count": 13.67,
+      "url": "/images/fruits/pomegranate.webp",
+      "credit": "https://unsplash.com/photos/red-pomegranate-Ws4axEMbsvY"
+    },
+    {
+      "name": "Fig",
+      "count": 16.26,
+      "url": "/images/fruits/fig.webp",
+      "credit": "https://unsplash.com/photos/six-onions-on-black-surface-FjrtDbsMZdo"
+    },
+    {
+      "name": "Lychee",
+      "count": 15.23,
+      "url": "/images/fruits/lychee.webp",
+      "credit": "https://unsplash.com/photos/a-bunch-of-fruit-hanging-from-a-tree-vxf5qTYKvRA"
+    },
+    {
+      "name": "Dragon Fruit",
+      "count": 7.65,
+      "url": "/images/fruits/dragonfruit.webp",
+      "credit": "https://unsplash.com/photos/a-pile-of-pink-dragon-fruit-sitting-on-top-of-a-table-1EjWR3oagkg"
+    },
+    {
+      "name": "Jackfruit",
+      "count": 19.08,
+      "url": "/images/fruits/jackfruit.webp",
+      "credit": "https://unsplash.com/photos/yellow-fruit-on-green-tree-during-daytime-RcDJZCVRrQ4"
+    },
+    {
+      "name": "Cantaloupe",
+      "count": 7.86,
+      "url": "/images/fruits/cantaloupe.webp",
+      "credit": "https://unsplash.com/photos/a-cut-in-half-melon-sitting-on-top-of-a-white-cloth-PIybW7_fg1U"
+    },
+    {
+      "name": "Apricot",
+      "count": 3.89,
+      "url": "/images/fruits/apricot.webp",
+      "credit": "https://unsplash.com/photos/mango-lot-J91jD9u6Nk4"
+    }
+  ]
+  

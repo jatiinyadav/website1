@@ -5,6 +5,7 @@ import StreakCounter from "./streak";
 import Buttons from "./buttons";
 import cars from "../cars.json";
 import animals from "../animals.json";
+import fruits from "../fruits.json";
 
 type Comparison = {
   name: string;
@@ -26,6 +27,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
   const allDataMap: Record<string, Comparison[]> = {
     cars,
     animals,
+    fruits
   };
 
   const [loaded, setLoaded] = useState(false);
@@ -195,7 +197,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                     priority
                     loading="eager"
                     onLoad={() => setLoaded(true)}
-                    className={`object-cover brightness-40 transition-opacity duration-700 ${
+                    className={`object-cover brightness-40 transition-opacity duration-700 hover:brightness-60 ${
                       loaded ? "opacity-100" : "opacity-0"
                     }`}
                   />
@@ -212,7 +214,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                   {leftOption.name}
                 </div>
                 <div
-                  className={`mt-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-xl sm:text-xl md:text-2xl lg:text-4xl font-bold hero ${
+                  className={`mt-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-xl sm:text-xl md:text-2xl lg:text-4xl font-bold description ${
                     borderColor.leftOptionBorder
                       ? `${borderColor.leftOptionBorder} opacity-100`
                       : `opacity-0`
@@ -253,7 +255,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                     priority
                     loading="eager"
                     onLoad={() => setLoaded(true)}
-                    className={`object-cover brightness-40 transition-opacity duration-700 ${
+                    className={`object-cover brightness-40 transition-opacity duration-700 hover:brightness-60 ${
                       loaded ? "opacity-100" : "opacity-0"
                     }`}
                   />
@@ -277,7 +279,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                   {rightOption.name}
                 </div>
                 <div
-                  className={`mt-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-xl sm:text-xl md:text-2xl lg:text-4xl font-bold hero ${
+                  className={`mt-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-xl sm:text-xl md:text-2xl lg:text-4xl font-bold description ${
                     borderColor.rightOptionBorder
                       ? `${borderColor.rightOptionBorder} opacity-100`
                       : `opacity-0`

@@ -2,16 +2,14 @@ const sharp = require("sharp");
 const fs = require("fs-extra");
 const path = require("path");
 
-const inputDir = path.join(__dirname, "public/images/animals");
-const outputDir = path.join(__dirname, "public/images/animalss");
+const inputDir = path.join(__dirname, "public/images/fruits");
+const outputDir = path.join(__dirname, "public/images/fruitss");
 
 (async () => {
   await fs.ensureDir(outputDir);
   const files = await fs.readdir(inputDir);
 
-  const imageFiles = files.filter(file =>
-    /\.(jpg|jpeg|png)$/i.test(file)
-  );
+  const imageFiles = files.filter((file) => /\.(jpg|jpeg|png)$/i.test(file));
 
   for (const file of imageFiles) {
     const inputPath = path.join(inputDir, file);
