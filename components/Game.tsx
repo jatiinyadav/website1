@@ -7,6 +7,7 @@ import cars from "../cars.json";
 import animals from "../animals.json";
 import fruits from "../fruits.json";
 import cities from "../cities.json";
+import food from "../food.json";
 
 type Comparison = {
   name: string;
@@ -29,7 +30,8 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
     cars,
     animals,
     fruits,
-    cities
+    cities,
+    food
   };
 
   const [loaded, setLoaded] = useState(false);
@@ -222,10 +224,12 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                       : `opacity-0`
                   }`}
                 >
-                  {gameHeader.toLowerCase() === "cars" && "$"}
+                  {gameHeader.toLowerCase() === "cars" && "$ "}
                   {leftOption.count}
                   {gameHeader.toLowerCase() === "animals" && " years"}
                   {gameHeader.toLowerCase() === "cities" && " million"}
+                  {gameHeader.toLowerCase() === "fruits" && " /100gm"}
+                  {gameHeader.toLowerCase() === "food" && " /100gm"}
                 </div>
                 <div
                   className={`absolute top-0 w-full text-left text-white text-3xl hero p-2 ${
@@ -288,10 +292,12 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                       : `opacity-0`
                   }`}
                 >
-                  {gameHeader.toLowerCase() === "cars" && "$"}
+                  {gameHeader.toLowerCase() === "cars" && "$ "}
                   {rightOption.count}
                   {gameHeader.toLowerCase() === "animals" && " years"}
                   {gameHeader.toLowerCase() === "cities" && " million"}
+                  {gameHeader.toLowerCase() === "fruits" && " /100gm"}
+                  {gameHeader.toLowerCase() === "food" && " /100gm"}
                 </div>
                 <div
                   className={`absolute bottom-0 w-full text-left text-white text-sm description pl-2 ${
