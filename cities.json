@@ -1,0 +1,140 @@
+[
+  {
+    "name": "Tokyo",
+    "count": 37.4,
+    "url": "/images/cities/tokyo.webp",
+    "credit": "https://unsplash.com/photos/photo-of-people-crossing-road-4HG5hlhmZg8"
+  },
+  {
+    "name": "Delhi",
+    "count": 32.0,
+    "url": "/images/cities/delhi.webp",
+    "credit": "https://unsplash.com/photos/brown-and-white-tower-under-blue-sky-during-daytime-6eGxyrxTfD8"
+  },
+  {
+    "name": "Shanghai",
+    "count": 29.2,
+    "url": "/images/cities/shangai.webp",
+    "credit": "https://unsplash.com/photos/people-standing-near-gray-concrete-tower-D7InODIWyK4"
+  },
+  {
+    "name": "São Paulo",
+    "count": 22.6,
+    "url": "/images/cities/paulo.webp",
+    "credit": "https://unsplash.com/photos/aerial-photo-of-city-buildings-during-daytime-UzN-d1g4moY"
+  },
+  {
+    "name": "Mexico City",
+    "count": 22.3,
+    "url": "/images/cities/mexico.webp",
+    "credit": "https://unsplash.com/photos/grey-pyramid-8L7mOETNgHA"
+  },
+  {
+    "name": "Cairo",
+    "count": 22.1,
+    "url": "/images/cities/cairo.webp",
+    "credit": "https://unsplash.com/photos/a-large-building-with-a-clock-on-the-top-of-it-2BTBhoecxPM"
+  },
+  {
+    "name": "Dhaka",
+    "count": 22.0,
+    "url": "/images/cities/dhaka.webp",
+    "credit": "https://unsplash.com/photos/a-number-of-small-boats-in-a-body-of-water-sk8LPCMvw_A"
+  },
+  {
+    "name": "Beijing",
+    "count": 21.7,
+    "url": "/images/cities/beijing.webp",
+    "credit": "https://unsplash.com/photos/aerial-view-of-city-during-daytime-zgsC4lTn7W8"
+  },
+  {
+    "name": "Mumbai",
+    "count": 21.6,
+    "url": "/images/cities/mumbai.webp",
+    "credit": "https://unsplash.com/photos/cars-on-road-near-catherdral-fUOMWdwuuvw"
+  },
+  {
+    "name": "Osaka",
+    "count": 19.0,
+    "url": "/images/cities/osaka.webp",
+    "credit": "https://unsplash.com/photos/people-walking-on-street-during-daytime-9zYjlA4LqTU"
+  },
+  {
+    "name": "Chongqing",
+    "count": 16.4,
+    "url": "/images/cities/chongqing.webp",
+    "credit": "https://unsplash.com/photos/concrete-buildings-beside-body-of-water-during-nighttime-E9dIbdSd7LU"
+  },
+  {
+    "name": "Istanbul",
+    "count": 15.6,
+    "url": "/images/cities/istanbul.webp",
+    "credit": "https://unsplash.com/photos/photography-of-mosque-buildings-oR9ZisoF_NE"
+  },
+  {
+    "name": "Buenos Aires",
+    "count": 15.5,
+    "url": "/images/cities/aires.webp",
+    "credit": "https://unsplash.com/photos/cars-on-road-near-city-buildings-during-daytime-QhQ4WgX77G0"
+  },
+  {
+    "name": "Kolkata",
+    "count": 14.9,
+    "url": "/images/cities/kolkata.webp",
+    "credit": "https://unsplash.com/photos/a-group-of-people-standing-around-a-yellow-car-HjIevU6VvQw"
+  },
+  {
+    "name": "Lagos",
+    "count": 14.8,
+    "url": "/images/cities/lagos.webp",
+    "credit": "https://unsplash.com/photos/city-skyline-under-blue-sky-during-daytime-9ySEZ-ugtJA"
+  },
+  {
+    "name": "Kinshasa",
+    "count": 14.3,
+    "url": "/images/cities/kinshasa.webp",
+    "credit": "https://unsplash.com/photos/a-group-of-people-standing-next-to-each-other-under-an-umbrella-leUZZ_OJF7A"
+  },
+  {
+    "name": "Manila",
+    "count": 14.2,
+    "url": "/images/cities/manila.webp",
+    "credit": "https://unsplash.com/photos/cars-on-road-near-buildings-during-daytime-SZKn8dUagjc"
+  },
+  {
+    "name": "Rio de Janeiro",
+    "count": 13.9,
+    "url": "/images/cities/janeiro.webp",
+    "credit": "https://unsplash.com/photos/white-cable-car-traversing-on-top-of-hills-overlooking-city-by-bay-cG2JQnPfmAw"
+  },
+  {
+    "name": "Guangzhou",
+    "count": 13.6,
+    "url": "/images/cities/guangzhou.webp",
+    "credit": "https://unsplash.com/photos/a-very-tall-tower-towering-over-a-city-next-to-a-river-BZG5p-u35tI"
+  },
+  {
+    "name": "Bangalore",
+    "count": 13.2,
+    "url": "/images/cities/bangalore.webp",
+    "credit": "https://unsplash.com/photos/a-large-building-with-a-statue-in-front-of-it-Y7UIBtbVywA"
+  },
+  {
+    "name": "Paris",
+    "count": 11.1,
+    "url": "/images/cities/paris.webp",
+    "credit": "https://unsplash.com/photos/eiffel-tower-during-daytime-Q0-fOL2nqZc"
+  },
+  {
+    "name": "London",
+    "count": 9.5,
+    "url": "/images/cities/london.webp",
+    "credit": "https://unsplash.com/photos/big-ben-tower-mOEqOtmuPG8"
+  },
+  {
+    "name": "New York City",
+    "count": 8.6,
+    "url": "/images/cities/newyork.webp",
+    "credit": "https://unsplash.com/photos/empire-state-building-new-york-city-during-daytime-rfj_wOYQkus"
+  }
+]
