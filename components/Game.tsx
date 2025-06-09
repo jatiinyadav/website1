@@ -31,7 +31,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
     animals,
     fruits,
     cities,
-    food
+    food,
   };
 
   const [loaded, setLoaded] = useState(false);
@@ -143,6 +143,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
 
     // Replace the incorrect car with new one
     setTimeout(() => {
+      setLoaded(false);
       setLeftOption(nextLeft);
       setRightOption(nextRight);
       setCurrentIndex(newIndex);
@@ -200,10 +201,9 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                     unoptimized
                     priority
                     loading="eager"
-                    placeholder="blur"
                     onLoad={() => setLoaded(true)}
                     className={`object-cover brightness-40 transition-opacity duration-700 hover:brightness-60 ${
-                      loaded ? "opacity-100" : "opacity-0"
+                      loaded ? "blur-0" : "blur-md"
                     }`}
                   />
                 </div>
@@ -262,10 +262,9 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                     unoptimized
                     priority
                     loading="eager"
-                    placeholder="blur"
                     onLoad={() => setLoaded(true)}
                     className={`object-cover brightness-40 transition-opacity duration-700 hover:brightness-60 ${
-                      loaded ? "opacity-100" : "opacity-0"
+                      loaded ? "blur-0" : "blur-md"
                     }`}
                   />
                 </div>
