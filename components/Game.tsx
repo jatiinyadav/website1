@@ -201,7 +201,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                     unoptimized
                     priority
                     loading="eager"
-                    onLoad={() => setLoaded(true)}
+                    onLoadingComplete={() => setLoaded(true)}
                     className={`object-cover brightness-40 transition-opacity duration-700 hover:brightness-60 ${
                       loaded ? "blur-0" : "blur-md"
                     }`}
@@ -262,7 +262,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                     unoptimized
                     priority
                     loading="eager"
-                    onLoad={() => setLoaded(true)}
+                    onLoadingComplete={() => setLoaded(true)}
                     className={`object-cover brightness-40 transition-opacity duration-700 hover:brightness-60 ${
                       loaded ? "blur-0" : "blur-md"
                     }`}
