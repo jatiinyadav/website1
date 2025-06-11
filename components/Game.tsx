@@ -60,6 +60,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
     const [a, b] = getTwoRandomOptions(allDataMap[gameHeader.toLowerCase()]);
     setLeftOption(a);
     setRightOption(b);
+    setLoaded(false);
 
     const savedHighScore = localStorage.getItem("highScore");
     if (savedHighScore) {
@@ -172,6 +173,22 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
 
   return (
     <>
+      {comparison?.map((item, index) => (
+        <Image
+          key={`preload-${index}`}
+          src={item.url}
+          alt={`Preload ${index}`}
+          width={1}
+          height={1}
+          priority
+          unoptimized // Optional: remove if you want Next.js optimization
+          style={{
+            opacity: 0,
+            position: "absolute",
+            pointerEvents: "none",
+          }}
+        />
+      ))}
       <div className="relative min-h-screen bg">
         <div className="pt-8">
           <Buttons
