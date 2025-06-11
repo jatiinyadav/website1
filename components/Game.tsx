@@ -14,6 +14,7 @@ type Comparison = {
   count: number | string;
   url: string;
   shown?: boolean;
+  base64url?: string;
 };
 
 type Header = {
@@ -190,7 +191,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
             <StreakCounter count={globalStreak} />
             {leftOption && (
               <div
-                className={`w-full h-full relative cursor-pointer transition-all duration-300`}
+                className={`w-full h-full relative cursor-pointer transition-all duration-300 brightness-80 hover:brightness-100`}
                 onClick={() => handleSelection("left")}
               >
                 <div className="relative w-full h-full">
@@ -198,13 +199,12 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                     src={leftOption.url}
                     alt={leftOption.name}
                     fill
-                    unoptimized
-                    priority
-                    loading="eager"
-                    onLoadingComplete={() => setLoaded(true)}
-                    className={`object-cover brightness-40 transition-opacity duration-700 hover:brightness-60 ${
-                      loaded ? "blur-0" : "blur-md"
+                    placeholder="blur"
+                    blurDataURL={leftOption.base64url}
+                    className={`object-cover brightness-40 transition duration-700 ${
+                      loaded ? "blur-0 opacity-100" : "blur-md opacity-0"
                     }`}
+                    onLoadingComplete={() => setLoaded(true)}
                   />
                 </div>
                 <div
@@ -251,7 +251,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
 
             {rightOption && (
               <div
-                className={`w-full h-full relative cursor-pointer transition-all duration-300`}
+                className={`w-full h-full relative cursor-pointer transition-all duration-300 brightness-80 hover:brightness-100`}
                 onClick={() => handleSelection("right")}
               >
                 <div className="relative w-full h-full">
@@ -259,13 +259,12 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                     src={rightOption.url}
                     alt={rightOption.name}
                     fill
-                    unoptimized
-                    priority
-                    loading="eager"
-                    onLoadingComplete={() => setLoaded(true)}
-                    className={`object-cover brightness-40 transition-opacity duration-700 hover:brightness-60 ${
-                      loaded ? "blur-0" : "blur-md"
+                    placeholder="blur"
+                    blurDataURL={rightOption.base64url}
+                    className={`object-cover brightness-40 transition duration-700 ${
+                      loaded ? "blur-0 opacity-100" : "blur-md opacity-0"
                     }`}
+                    onLoadingComplete={() => setLoaded(true)}
                   />
                 </div>
                 <div
