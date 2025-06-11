@@ -14,7 +14,6 @@ type Comparison = {
   count: number | string;
   url: string;
   shown?: boolean;
-  base64url?: string;
 };
 
 type Header = {
@@ -55,6 +54,12 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
   const [gameHeader, setGameHeader] = useState(header.heading);
   const [gameDescription, setGameDescription] = useState(header.description);
   const [highScore, setHighScore] = useState(0);
+  const [showImage, setShowImage] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setShowImage(true), 50); // Short delay guarantees fade
+    return () => clearTimeout(timeout);
+  }, []);
 
   useEffect(() => {
     setComparison(allDataMap[gameHeader.toLowerCase()]);
@@ -200,11 +205,9 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                     alt={leftOption.name}
                     fill
                     placeholder="blur"
-                    blurDataURL={leftOption.base64url}
-                    className={`object-cover brightness-40 transition duration-700 ease-out ${
-                      loaded ? "blur-0" : "blur-lg"
+                    className={`object-cover brightness-40 opacity-0 transition-opacity duration-700 ease-out ${
+                      showImage ? "opacity-100" : ""
                     }`}
-                    onLoadingComplete={() => setLoaded(true)}
                   />
                 </div>
                 <div
@@ -260,11 +263,9 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                     alt={rightOption.name}
                     fill
                     placeholder="blur"
-                    blurDataURL={rightOption.base64url}
-                    className={`object-cover brightness-40 transition duration-700 ease-out ${
-                      loaded ? "blur-0" : "blur-lg"
+                    className={`object-cover brightness-40 opacity-0 transition-opacity duration-700 ease-out ${
+                      showImage ? "opacity-100" : ""
                     }`}
-                    onLoadingComplete={() => setLoaded(true)}
                   />
                 </div>
                 <div
