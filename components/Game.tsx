@@ -173,22 +173,6 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
 
   return (
     <>
-      {comparison?.map((item, index) => (
-        <Image
-          key={`preload-${index}`}
-          src={item.url}
-          alt={`Preload ${index}`}
-          width={1}
-          height={1}
-          priority
-          unoptimized // Optional: remove if you want Next.js optimization
-          style={{
-            opacity: 0,
-            position: "absolute",
-            pointerEvents: "none",
-          }}
-        />
-      ))}
       <div className="relative min-h-screen bg">
         <div className="pt-8">
           <Buttons
@@ -204,7 +188,9 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
 
         <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-[20%] bottom-0">
           <div className="flex flex-col md:flex-row justify-center items-center min-w-screen h-[80vh] z-20">
-            <StreakCounter count={globalStreak} />
+            {(leftOption || rightOption) && (
+              <StreakCounter count={globalStreak} />
+            )}
             {leftOption && (
               <div
                 className={`w-full h-full relative cursor-pointer transition-all duration-300 brightness-80 hover:brightness-100`}
@@ -335,6 +321,22 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
 
         {gameOver && <GameOverModal onRestart={restartGame} />}
       </div>
+      {comparison?.map((item, index) => (
+        <Image
+          key={`preload-${index}`}
+          src={item.url}
+          alt={`Preload ${index}`}
+          width={0}
+          height={0}
+          priority
+          unoptimized
+          style={{
+            opacity: 0,
+            position: "absolute",
+            pointerEvents: "none",
+          }}
+        />
+      ))}
     </>
   );
 };
