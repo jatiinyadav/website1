@@ -202,7 +202,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                     placeholder="blur"
                     blurDataURL={leftOption.base64url}
                     className={`object-cover brightness-40 transition duration-700 ease-out ${
-                      loaded ? "blur-0 scale-100" : "blur-lg scale-105"
+                      loaded ? "blur-0" : "blur-lg"
                     }`}
                     onLoadingComplete={() => setLoaded(true)}
                   />
@@ -262,7 +262,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                     placeholder="blur"
                     blurDataURL={rightOption.base64url}
                     className={`object-cover brightness-40 transition duration-700 ease-out ${
-                      loaded ? "blur-0 scale-100" : "blur-lg scale-105"
+                      loaded ? "blur-0" : "blur-lg"
                     }`}
                     onLoadingComplete={() => setLoaded(true)}
                   />
