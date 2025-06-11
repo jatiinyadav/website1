@@ -54,12 +54,6 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
   const [gameHeader, setGameHeader] = useState(header.heading);
   const [gameDescription, setGameDescription] = useState(header.description);
   const [highScore, setHighScore] = useState(0);
-  const [showImage, setShowImage] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setShowImage(true), 50); // Short delay guarantees fade
-    return () => clearTimeout(timeout);
-  }, []);
 
   useEffect(() => {
     setComparison(allDataMap[gameHeader.toLowerCase()]);
@@ -199,15 +193,20 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                 className={`w-full h-full relative cursor-pointer transition-all duration-300 brightness-80 hover:brightness-100`}
                 onClick={() => handleSelection("left")}
               >
-                <div className="relative w-full h-full">
+                <div
+                  className={`relative w-full h-full bg-black transition-opacity duration-700 ease-out ${
+                    loaded ? "opacity-100" : "opacity-0"
+                  }`}
+                >
                   <Image
                     src={leftOption.url}
                     alt={leftOption.name}
                     fill
-                    placeholder="blur"
-                    className={`object-cover brightness-40 opacity-0 transition-opacity duration-700 ease-out ${
-                      showImage ? "opacity-100" : ""
-                    }`}
+                    unoptimized
+                    priority
+                    loading="eager"
+                    onLoadingComplete={() => setLoaded(true)}
+                    className="object-cover brightness-40"
                   />
                 </div>
                 <div
@@ -257,15 +256,20 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                 className={`w-full h-full relative cursor-pointer transition-all duration-300 brightness-80 hover:brightness-100`}
                 onClick={() => handleSelection("right")}
               >
-                <div className="relative w-full h-full">
+                <div
+                  className={`relative w-full h-full bg-black transition-opacity duration-700 ease-out ${
+                    loaded ? "opacity-100" : "opacity-0"
+                  }`}
+                >
                   <Image
                     src={rightOption.url}
                     alt={rightOption.name}
                     fill
-                    placeholder="blur"
-                    className={`object-cover brightness-40 opacity-0 transition-opacity duration-700 ease-out ${
-                      showImage ? "opacity-100" : ""
-                    }`}
+                    unoptimized
+                    priority
+                    loading="eager"
+                    onLoadingComplete={() => setLoaded(true)}
+                    className="object-cover brightness-40"
                   />
                 </div>
                 <div
