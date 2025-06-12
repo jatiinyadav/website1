@@ -64,8 +64,8 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
     setLeftOption(null);
     setRightOption(null);
     setLoaded(false);
-    setLoadedCount(0)
-    
+    setLoadedCount(0);
+
     setComparison(allDataMap[gameHeader.toLowerCase()]);
     const [a, b] = getTwoRandomOptions(allDataMap[gameHeader.toLowerCase()]);
     setLeftOption(a);
@@ -159,7 +159,6 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
 
     // Replace the incorrect car with new one
     setTimeout(() => {
-      setLoaded(false);
       setLeftOption(nextLeft);
       setRightOption(nextRight);
       setCurrentIndex(newIndex);

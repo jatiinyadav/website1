@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import Image from "next/image";
 import Buttons from "@/components/buttons";
-import PlaneAnimation from "@/components/planeanimation";
 import VerticalSpinner from "@/components/verticalspinner";
 import HorizontalSpinner from "@/components/horizontalspinner";
+import Loading1 from "../public/images/loading/loadingImage1.webp";
+import Loading2 from "../public/images/loading/loadingImage1.webp";
 import "../styles/globals.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -33,7 +33,6 @@ const Landing: React.FC<Props> = ({
   const planeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-
     const headingEl = headingRef.current;
     if (!headingEl) return;
 
@@ -89,8 +88,34 @@ const Landing: React.FC<Props> = ({
     <>
       {/* <Header /> */}
       <>
+        <Image
+          src={Loading1}
+          alt={`Preload`}
+          width={0}
+          height={0}
+          priority
+          unoptimized
+          style={{
+            opacity: 0,
+            position: "absolute",
+            pointerEvents: "none",
+          }}
+        />
+        <Image
+          src={Loading2}
+          alt={`Preload`}
+          width={0}
+          height={0}
+          priority
+          unoptimized
+          style={{
+            opacity: 0,
+            position: "absolute",
+            pointerEvents: "none",
+          }}
+        />
         <div
-          className="flex h-screen items-center justify-center text-center px-4 text-[#121A2A]"
+          className="flex h-screen items-center justify-center text-center px-4 text-[#121A2A] overflow-y-hidden"
           style={{ zIndex: 2 }}
         >
           <div>
@@ -154,7 +179,7 @@ const Landing: React.FC<Props> = ({
         </div>
       </>
 
-      <Footer />
+      {/* <Footer /> */}
 
       <style jsx>
         {`
