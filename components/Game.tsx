@@ -8,6 +8,8 @@ import animals from "../animals.json";
 import fruits from "../fruits.json";
 import cities from "../cities.json";
 import food from "../food.json";
+import Loading1 from "../public/images/loading/loadingImage1.webp";
+import Loading2 from "../public/images/loading/loadingImage1.webp";
 
 type Comparison = {
   name: string;
@@ -35,8 +37,8 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
   };
 
   const [loaded, setLoaded] = useState(false);
-  const [leftOption, setLeftOption] = useState<Comparison>();
-  const [rightOption, setRightOption] = useState<Comparison>();
+  const [leftOption, setLeftOption] = useState<Comparison | null>();
+  const [rightOption, setRightOption] = useState<Comparison | null>();
   const [borderColor, setBorderColor] = useState({
     leftOptionBorder: "",
     rightOptionBorder: "",
@@ -55,12 +57,19 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
   const [gameDescription, setGameDescription] = useState(header.description);
   const [highScore, setHighScore] = useState(0);
 
+  const [loadedCount, setLoadedCount] = useState(0);
+  const totalImages = comparison?.length || 0;
+
   useEffect(() => {
+    setLeftOption(null);
+    setRightOption(null);
+    setLoaded(false);
+    setLoadedCount(0)
+    
     setComparison(allDataMap[gameHeader.toLowerCase()]);
     const [a, b] = getTwoRandomOptions(allDataMap[gameHeader.toLowerCase()]);
     setLeftOption(a);
     setRightOption(b);
-    setLoaded(false);
 
     const savedHighScore = localStorage.getItem("highScore");
     if (savedHighScore) {
@@ -68,6 +77,12 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
     }
     setGlobalStreak(0);
   }, [gameHeader]);
+
+  useEffect(() => {
+    if (loadedCount === totalImages && totalImages > 0) {
+      setLoaded(true);
+    }
+  }, [loadedCount, totalImages]);
 
   const handleSelection = (side: "left" | "right") => {
     if (!leftOption || !rightOption) return;
@@ -173,6 +188,23 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
 
   return (
     <>
+      {comparison?.map((item, index) => (
+        <Image
+          key={`preload-${index}`}
+          src={item.url}
+          alt={`Preload ${index}`}
+          width={0}
+          height={0}
+          priority
+          unoptimized
+          style={{
+            opacity: 0,
+            position: "absolute",
+            pointerEvents: "none",
+          }}
+          onLoad={() => setLoadedCount((prev) => prev + 1)}
+        />
+      ))}
       <div className="relative min-h-screen bg">
         <div className="pt-8">
           <Buttons
@@ -191,13 +223,13 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
             {(leftOption || rightOption) && (
               <StreakCounter count={globalStreak} />
             )}
-            {leftOption && (
+            {leftOption && loaded && (
               <div
-                className={`w-full h-full relative cursor-pointer transition-all duration-300 brightness-80 hover:brightness-100`}
+                className={`w-full h-full relative cursor-pointer transition-all duration-300 brightness-80 ease-out hover:brightness-100`}
                 onClick={() => handleSelection("left")}
               >
                 <div
-                  className={`relative w-full h-full bg-black transition-opacity duration-700 ease-out ${
+                  className={`relative w-full h-full transition-opacity duration-700 ease-out ${
                     loaded ? "opacity-100" : "opacity-0"
                   }`}
                 >
@@ -254,9 +286,34 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
               </div>
             )}
 
-            {rightOption && (
+            {!loaded && (
               <div
-                className={`w-full h-full relative cursor-pointer transition-all duration-300 brightness-80 hover:brightness-100`}
+                className={`w-full h-full relative cursor-pointer transition-all duration-300 ease-out`}
+              >
+                <div
+                  className={`relative w-full h-full bg-black transition-opacity duration-700 ease-out`}
+                >
+                  <Image
+                    src={Loading1}
+                    alt="loading..."
+                    fill
+                    unoptimized
+                    priority
+                    loading="eager"
+                    className="object-cover brightness-20"
+                  />
+                </div>
+                <div
+                  className={`brightness-100 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-4xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold hero text-white`}
+                >
+                  Loading...
+                </div>
+              </div>
+            )}
+
+            {rightOption && loaded && (
+              <div
+                className={`w-full h-full relative cursor-pointer transition-all duration-300 brightness-80 ease-out hover:brightness-100`}
                 onClick={() => handleSelection("right")}
               >
                 <div
@@ -316,27 +373,36 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                 </div>
               </div>
             )}
+
+            {!loaded && (
+              <div
+                className={`w-full h-full relative cursor-pointer transition-all duration-300`}
+              >
+                <div
+                  className={`relative w-full h-full bg-black transition-opacity duration-700 ease-out`}
+                >
+                  <Image
+                    src={Loading2}
+                    alt="loading..."
+                    fill
+                    unoptimized
+                    priority
+                    loading="eager"
+                    className="object-cover brightness-20"
+                  />
+                </div>
+                <div
+                  className={`brightness-100 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center text-4xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold hero text-white`}
+                >
+                  Loading...
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
         {gameOver && <GameOverModal onRestart={restartGame} />}
       </div>
-      {comparison?.map((item, index) => (
-        <Image
-          key={`preload-${index}`}
-          src={item.url}
-          alt={`Preload ${index}`}
-          width={0}
-          height={0}
-          priority
-          unoptimized
-          style={{
-            opacity: 0,
-            position: "absolute",
-            pointerEvents: "none",
-          }}
-        />
-      ))}
     </>
   );
 };
