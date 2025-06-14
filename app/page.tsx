@@ -4,12 +4,6 @@ import Game from "@/components/Game";
 import Landing from "@/components/landing";
 import { useState } from "react";
 
-type Comparison = {
-  name: string;
-  count: number | string;
-  url: string;
-};
-
 export default function Home() {
   const [showGame, setShowGame] = useState(false);
   const [gameHeader, setGameHeader] = useState("");
