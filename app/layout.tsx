@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const baseUrl = "https://guesshigher.com";
+const baseUrl = "https://www.guesshigher.com";
 
 export const metadata = {
   title: "Guess Higher",
@@ -22,7 +22,7 @@ export const metadata = {
     title: "Guess Higher",
     description:
       "Play Guess Higher and test your knowledge! Guess which item has a higher value across topics like cars, cities, food & more. Fun and addictive quiz game!",
-    url: "https://guessigher.com",
+    url: "https://www.guesshigher.com",
     siteName: "Guess Higher",
     images: [
       {

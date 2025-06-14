@@ -214,7 +214,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
           onLoad={() => setLoadedCount((prev) => prev + 1)}
         />
       ))}
-      <div className="relative flex justify-center w-full min-h-screen bg">
+      <div className="relative flex justify-center w-full h-[100dvh] bg">
         <div className="absolute z-21 bg-white/1 rounded-b-[2rem] backdrop-blur-md p-4">
           <div>
             <div>

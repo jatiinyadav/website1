@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative min-h-screen bg">
+      <div className="relative h-[100dvh] bg">
         {!showGame && (
           <Landing
             setShowGame={setShowGame}
