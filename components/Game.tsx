@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import GameOverModal from "./gameover";
 import StreakCounter from "./streak";
 import Buttons from "./buttons";
@@ -49,7 +49,6 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
   const [comparison, setComparison] = useState<Comparison[]>(
     allDataMap[header.heading.toLowerCase()]
   );
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [lastCorrectSide, setLastCorrectSide] = useState<
     "left" | "right" | null
   >(null);
@@ -59,6 +58,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
 
   const [loadedCount, setLoadedCount] = useState(0);
   const totalImages = comparison?.length || 0;
+  const shownPairs = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     setLeftOption(null);
@@ -134,19 +134,30 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
     setStreak(nextStreak);
     setLastCorrectSide(correctSide);
 
-    // Decide how to advance the window
-    const step = nextStreak >= 2 ? 2 : 1;
-    let newIndex = currentIndex + step;
-    console.log(newIndex);
+    // Create a function to get a unique random pair
+    const getNextPair = () => {
+      const maxAttempts = 50;
+      for (let i = 0; i < maxAttempts; i++) {
+        const idx1 = Math.floor(Math.random() * comparison.length);
+        let idx2 = Math.floor(Math.random() * comparison.length);
+        while (idx1 === idx2) {
+          idx2 = Math.floor(Math.random() * comparison.length);
+        }
 
-    // If no more images to show
-    if (newIndex + 1 >= comparison.length) {
-      newIndex = 0;
-    }
+        const key = `${Math.min(idx1, idx2)}-${Math.max(idx1, idx2)}`;
+        if (!shownPairs.current.has(key)) {
+          shownPairs.current.add(key);
+          return [comparison[idx1], comparison[idx2]];
+        }
+      }
+
+      // If all combinations shown or too many retries, reset
+      shownPairs.current.clear();
+      return getNextPair();
+    };
 
     // Determine next two options
-    let nextLeft = comparison[newIndex];
-    let nextRight = comparison[newIndex + 1];
+    let [nextLeft, nextRight] = getNextPair();
 
     // Flip correct side if streak is 2+
     if (nextStreak >= 2 && lastCorrectSide) {
@@ -161,7 +172,6 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
     setTimeout(() => {
       setLeftOption(nextLeft);
       setRightOption(nextRight);
-      setCurrentIndex(newIndex);
       setBorderColor({ leftOptionBorder: "", rightOptionBorder: "" });
     }, 800);
   };
@@ -204,21 +214,25 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
           onLoad={() => setLoadedCount((prev) => prev + 1)}
         />
       ))}
-      <div className="relative min-h-screen bg">
-        <div className="pt-8">
-          <Buttons
-            gap={false}
-            selected={header.heading}
-            setGameHeader={setGameHeader}
-            setGameDescription={setGameDescription}
-          />
+      <div className="relative flex justify-center w-full min-h-screen bg">
+        <div className="absolute z-21 bg-white/1 rounded-b-[2rem] backdrop-blur-md p-4">
+          <div>
+            <div>
+              <Buttons
+                gap={false}
+                selected={header.heading}
+                setGameHeader={setGameHeader}
+                setGameDescription={setGameDescription}
+              />
+            </div>
+            <h2 className="text-md sm:text-xl lg:text-2xl text-center sm:pt-2 text-white description">
+              {gameDescription}
+            </h2>
+          </div>
         </div>
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center pt-3 sm:pt-5 text-black description">
-          {gameDescription}
-        </h2>
 
-        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-[20%] bottom-0">
-          <div className="flex flex-col md:flex-row justify-center items-center min-w-screen h-[80vh] z-20">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="flex flex-col md:flex-row justify-center items-center min-w-screen h-[100vh] z-20">
             {(leftOption || rightOption) && (
               <StreakCounter count={globalStreak} />
             )}
@@ -269,18 +283,18 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                   {gameHeader.toLowerCase() === "food" && " /100gm"}
                 </div>
                 <div
-                  className={`absolute top-0 w-full text-left text-white text-3xl hero p-2 ${
+                  className={`absolute w-full text-left text-white text-3xl hero p-2 ${
                     loaded ? "opacity-100" : "opacity-0"
-                  }`}
+                  } bottom-0 md:top-0 md:bottom-auto`}
                 >
                   High Score : {highScore}
                 </div>
                 <div
-                  className={`absolute bottom-0 w-full text-left text-white text-sm description pl;-2 ${
+                  className={`absolute bottom-0 w-full text-right text-white text-sm description pl;-2 ${
                     loaded ? "opacity-100" : "opacity-0"
                   }`}
                 >
-                  Image
+                  Image Src: Unsplash
                 </div>
               </div>
             )}
@@ -364,11 +378,11 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                   {gameHeader.toLowerCase() === "food" && " /100gm"}
                 </div>
                 <div
-                  className={`absolute bottom-0 w-full text-left text-white text-sm description pl-2 ${
+                  className={`absolute bottom-0 w-full text-right text-white text-sm description pl-2 ${
                     loaded ? "opacity-100" : "opacity-0"
                   }`}
                 >
-                  Image
+                  Image src: Unsplash
                 </div>
               </div>
             )}

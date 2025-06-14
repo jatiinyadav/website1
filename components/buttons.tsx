@@ -20,6 +20,8 @@ const Buttons: React.FC<Props> = ({
 }) => {
   const [showGap, setShowGap] = useState(gap);
   const [selectedGenre, setSelectedGenre] = useState<string>(selected);
+  const landingButton = "text-lg px-7 py-3";
+  const gameButtons = "text-md px-4 py-2";
 
   const gamePrompts: Record<string, string> = {
     Cars: "Which is pricier? Tap it.",
@@ -28,7 +30,7 @@ const Buttons: React.FC<Props> = ({
     Cities: "Most populated? Tap it.",
     Food: "Highest calories? Tap it.",
   };
-  
+
   const animateButtons = (genre: string) => {
     if (!selectedGenre) {
       setShowGap(false);
@@ -47,7 +49,7 @@ const Buttons: React.FC<Props> = ({
         duration: 0.3,
         borderRadius: 0,
         margin: 0,
-        padding: "8px 26px", // optional tighter padding
+        padding: "10px 26px", // optional tighter padding
         stagger: 0.05,
       });
 
@@ -82,11 +84,16 @@ const Buttons: React.FC<Props> = ({
             key={genre}
             type="button"
             onClick={() => animateButtons(genre)}
-            className={`genre-button border-2 border-gray-900 text-sm sm:text-base md:text-md px-6 sm:px-8 py-2 sm:py-2.5 cursor-pointer
+            className={`genre-button cursor-pointer text-gray-900 font-medium rounded-none text-center mb-2
         ${
           selectedGenre === genre
-            ? "bg-white text-black"
-            : "bg-[#fff8e6] text-gray-900"
+            ? "bg-white text-black rounded-none"
+            : "bg-gradient-to-r from-[rgb(241,239,232)] to-[#fff1cc]"
+        }
+        ${
+          showGap
+            ? "text-xl px-6 py-3"
+            : "text-sm px-2 py-1 md:text-lg md:px-7 md:py-3"
         }
       `}
           >
