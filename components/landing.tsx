@@ -164,7 +164,7 @@ const Landing: React.FC<Props> = ({
         </div>
         <div className="block 2xl:hidden">
           <div className="absolute top-0 opacity-0" ref={horizontalLeftScroll}>
-            <HorizontalSpinner direction="left" position="top" offset={100} />
+            <HorizontalSpinner direction="left" position="top" offset={50} />
           </div>
           <div
             className="absolute bottom-0 opacity-0"
@@ -173,7 +173,7 @@ const Landing: React.FC<Props> = ({
             <HorizontalSpinner
               direction="right"
               position="bottom"
-              offset={20}
+              offset={-40}
             />
           </div>
         </div>
