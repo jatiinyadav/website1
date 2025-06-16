@@ -20,8 +20,6 @@ const Buttons: React.FC<Props> = ({
 }) => {
   const [showGap, setShowGap] = useState(gap);
   const [selectedGenre, setSelectedGenre] = useState<string>(selected);
-  const landingButton = "text-lg px-7 py-3";
-  const gameButtons = "text-md px-4 py-2";
 
   const gamePrompts: Record<string, string> = {
     Cars: "Which is pricier? Tap it.",
@@ -84,10 +82,10 @@ const Buttons: React.FC<Props> = ({
             key={genre}
             type="button"
             onClick={() => animateButtons(genre)}
-            className={`genre-button cursor-pointer text-gray-900 font-medium rounded-none text-center mb-2
+            className={`genre-button cursor-pointer text-gray-900 font-medium rounded-lg text-center mb-2 border-2 
         ${
           selectedGenre === genre
-            ? "bg-white text-black rounded-none"
+            ? "bg-white text-black"
             : "bg-gradient-to-r from-[rgb(241,239,232)] to-[#fff1cc]"
         }
         ${

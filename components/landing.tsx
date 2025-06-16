@@ -115,7 +115,7 @@ const Landing: React.FC<Props> = ({
           }}
         />
         <div
-          className="flex h-screen items-center justify-center text-center px-4 text-[#121A2A] overflow-y-hidden"
+          className="flex alignInCenter items-center justify-center text-center px-4 text-[#121A2A] overflow-y-hidden"
           style={{ zIndex: 2 }}
         >
           <div>
@@ -173,7 +173,6 @@ const Landing: React.FC<Props> = ({
             <HorizontalSpinner
               direction="right"
               position="bottom"
-              offset={-40}
             />
           </div>
         </div>
@@ -184,8 +183,9 @@ const Landing: React.FC<Props> = ({
       <style jsx>
         {`
           .alignInCenter {
+            width: 100%;
             position: absolute;
-            top: 40%;
+            top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
           }

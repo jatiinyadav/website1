@@ -283,7 +283,7 @@ const Game: React.FC<StreakCounterProps> = ({ header }) => {
                   {gameHeader.toLowerCase() === "food" && " /100gm"}
                 </div>
                 <div
-                  className={`absolute w-full text-left text-white text-3xl hero p-2 ${
+                  className={`absolute w-full text-left text-white text-xl md:text-3xl hero p-2 ${
                     loaded ? "opacity-100" : "opacity-0"
                   } bottom-0 md:top-0 md:bottom-auto`}
                 >
