@@ -59,7 +59,7 @@ const HorizontalSpinner = ({
 
   return (
     <div
-      className="left-0 w-screen h-40 overflow-hidden z-10 absolute"
+      className="left-0 w-screen overflow-hidden z-10 absolute"
       style={{
         ...positionStyle,
         WebkitMaskImage:
